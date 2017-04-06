@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Install Homebrew & Cask
+if [ `which brew | wc -l` -eq 0 ]
+then
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+brew tap caskroom/cask
+brew install brew-cask
+
+# Install RVM
+brew install gpg
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+# if [ `which rvm | wc -l` -eq 0 ]
+# then
+#     curl -sSL https://get.rvm.io | bash -s stable --ruby
+#     source ~/.rvm/scripts/rvm
+# fi
+
+# Install basic tools using Homebrew
+brew install git mas openssh vim wget xz
+brew install imagemagick npm sl
+brew cleanup 
+brew cask install firefox google-chrome opera
+brew cask install parallels-desktop vagrant virtualbox
+brew cask install dropbox onedrive google-drive
+brew cask install flash java adobe-air dotnet
+brew cask install metasequoia adobe-creative-cloud obs
+brew cask install docker-toolbox
+brew cask install minecraft franz visual-studio-code-insiders visual-studio docker-toolbox
+brew cask cleanup
