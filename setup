@@ -11,11 +11,15 @@ brew install brew-cask
 # Install RVM
 brew install gpg
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-# if [ `which rvm | wc -l` -eq 0 ]
-# then
-#     curl -sSL https://get.rvm.io | bash -s stable --ruby
-#     source ~/.rvm/scripts/rvm
-# fi
+
+if [ `which rvm | wc -l` -eq 0 ]
+then
+    curl -sSL https://get.rvm.io | bash -s stable --ruby
+    source='source ~/.rvm/scripts/rvm'
+    profile=~/.bash_profile
+    grep -q ${source} ${profile} || echo ${source} >> ${profile}
+    source ${profile}
+fi
 
 # Install basic tools using Homebrew
 brew install git mas openssh vim wget xz
