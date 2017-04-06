@@ -1,6 +1,7 @@
 #!/bin/sh
 
-sudo softwareupdate -iva
+sudo softwareupdate --schedule on
+sudo softwareupdate -ia
 
 # Install Homebrew & Cask
 if [ `which brew | wc -l` -eq 0 ]
