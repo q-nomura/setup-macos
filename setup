@@ -1,12 +1,18 @@
 #!/bin/sh
 
+sudo softwareupdate -iva
+
 # Install Homebrew & Cask
 if [ `which brew | wc -l` -eq 0 ]
 then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 brew tap caskroom/cask
-brew install brew-cask
+
+# Install mas & OSX upgrade
+brew install mas
+
+exit
 
 # Install RVM
 brew install gpg
@@ -22,7 +28,7 @@ then
 fi
 
 # Install basic tools using Homebrew
-brew install git mas openssh vim wget xz
+brew install mas openssh vim wget xz
 brew install imagemagick npm sl
 brew cleanup 
 brew cask install firefox google-chrome opera
