@@ -2,6 +2,7 @@
 
 sudo softwareupdate --schedule on
 sudo softwareupdate -ia
+sudo languagesetup -langspec "Japanese"
 
 # Install Homebrew & Cask
 if [ `which brew | wc -l` -eq 0 ]
