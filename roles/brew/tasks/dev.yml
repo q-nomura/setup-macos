@@ -9,13 +9,13 @@
   - openssh
   - vim
 
-- name: Validate installed Meteor.
-  shell: which meteor
-  register: meteor
+# - name: Validate installed Meteor.
+#   shell: which meteor
+#   register: meteor
 
-- name: Install Meteor
-  shell: curl https://install.meteor.com/ | sh
-  when: 'not meteor.stdout'
+# - name: Install Meteor
+#   shell: curl https://install.meteor.com/ | sh
+#   when: 'not meteor.stdout'
 
 - name: Install develop tools from Homebrew cask.
   homebrew_cask:
