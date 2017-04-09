@@ -1,0 +1,10 @@
+---
+- name: Install virtualization tools from Homebrew cask.
+  homebrew_cask:
+    name: '{{ item }}'
+    state: present
+  with_items:
+  - parallels-desktop
+  - vagrant
+  - virtualbox
+  - docker-toolbox

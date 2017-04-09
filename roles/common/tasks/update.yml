@@ -1,0 +1,12 @@
+---
+- name: SoftwareUpdate schedule on
+  shell: softwareupdate --schedule on
+  become: true
+  changed_when: false
+
+- name: SoftwareUpdate start
+  shell: softwareupdate -ia
+  become: true
+  register: softwareupdate
+  changed_when: '"No updates are available." not in softwareupdate.stderr'
+  notify: Reboot macOS

@@ -1,0 +1,12 @@
+---
+- name: Judges whether this Mac is remote control by Vagrant.
+  stat:
+    path: /vagrant
+  register: vagrant
+
+- name: Remove startup
+  shell: osascript -e 'tell application "System Events" to delete login item "setup"'
+  when: not vagrant.stat.exists
+
+- include: ../../common/handlers/reboot.yml
+

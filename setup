@@ -1,43 +1,16 @@
 #!/bin/sh
 
-sudo softwareupdate --schedule on
-sudo softwareupdate -ia
-sudo languagesetup -langspec "Japanese"
+cd $(cd $(dirname $0); pwd)
 
-# Install Homebrew & Cask
-if [ `which brew | wc -l` -eq 0 ]
-then
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-brew tap caskroom/cask
+# Install Homebrew, Ansible and Python.
+./install-ansible.sh
 
-# Install mas & OSX upgrade
-brew install mas
+# Add this script to start-up.
+path=$(cd $(dirname $0); pwd)/${0##*/}
+tellto='tell application "System Events" to '
+osa_args="{path:\"${path}\", hidden:false, name:\"${0##*/}\"}"
+#osascript -e "${tellto}delete login item \"${0##*/}\""
+osascript -e "${tellto}make login item at end with properties ${osa_args}"
 
-exit
+ansible-playbook -i hosts --ask-sudo-pass -v playbook.yml
 
-# Install RVM
-brew install gpg
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-
-if [ `which rvm | wc -l` -eq 0 ]
-then
-    curl -sSL https://get.rvm.io | bash -s stable --ruby
-    source='source ~/.rvm/scripts/rvm'
-    profile=~/.bash_profile
-    grep -q ${source} ${profile} || echo ${source} >> ${profile}
-    source ${profile}
-fi
-
-# Install basic tools using Homebrew
-brew install mas openssh vim wget xz
-brew install imagemagick npm sl
-brew cleanup 
-brew cask install firefox google-chrome opera
-brew cask install parallels-desktop vagrant virtualbox
-brew cask install dropbox onedrive google-drive
-brew cask install flash java adobe-air dotnet
-brew cask install metasequoia adobe-creative-cloud obs
-brew cask install docker-toolbox
-brew cask install minecraft franz visual-studio-code-insiders visual-studio docker-toolbox
-brew cask cleanup

@@ -1,0 +1,7 @@
+---
+- name: Setup dev environment for macOS.
+  hosts: all
+  roles:
+    - common
+    - brew
+    - finish

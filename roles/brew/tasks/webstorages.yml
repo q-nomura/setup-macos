@@ -1,0 +1,16 @@
+---
+- name: Install web-storage tools from Homebrew cask.
+  homebrew_cask:
+    name: '{{ item }}'
+    state: present
+  with_items:
+  - dropbox
+  - google-drive
+  - adobe-creative-cloud
+
+- name: Install web-storage tools from mas.
+  shell: 'mas install {{ item }}'
+  register: mas
+  changed_when: '"already installed" in mas.stdout'
+  with_items:
+  - 823766827 #OneDrive
