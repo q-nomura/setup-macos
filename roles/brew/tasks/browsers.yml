@@ -1,0 +1,9 @@
+---
+- name: Install web browser from Homebrew cask.
+  homebrew_cask:
+    name: '{{ item }}'
+    state: present
+  with_items:
+  - firefox
+  - google-chrome
+  - opera

@@ -1,0 +1,28 @@
+---
+- name: Collect current locale.
+  shell: defaults read NSGlobalDomain AppleLanguages
+  register: locale
+  changed_when: false
+
+- name: Change locale to Japanese. (1/2)
+  shell: languagesetup -langspec "Japanese"
+  become: true
+  notify: Reboot macOS
+  when: '"ja-JP" not in locale.stdout'
+
+- name: Change locale to Japanese. (2/2)
+  shell: defaults write NSGlobalDomain AppleLanguages "(ja-JP)"
+  notify: Reboot macOS
+  when: '"ja-JP" not in locale.stdout'
+
+- name: Collect current timezone
+  shell: systemsetup -gettimezone
+  become: true
+  changed_when: false
+  register: timezone
+
+- name: Change current timezone Asia/Tokyo
+  shell: systemsetup -settimezone 'Asia/Tokyo'
+  become: true
+  when: '"Asia/Tokyo" not in timezone.stdout'
+  notify: Reboot macOS

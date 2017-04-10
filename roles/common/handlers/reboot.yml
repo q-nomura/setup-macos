@@ -1,0 +1,25 @@
+---
+- name: Judges whether this Mac is remote control by Vagrant.
+  stat:
+    path: /vagrant
+  register: vagrant
+
+- name: Create reboot flag.
+  file:
+    path: ~/.reboot
+    state: touch
+    mode: 0666
+  when: vagrant.stat.exists
+
+- name: Abort for Reload VM
+  fail:
+    msg: "Since restart is necessary, playbook forcibly terminates."
+  when: vagrant.stat.exists
+
+- name: Restart machine
+  shell: sleep 2 && shutdown -r now 'Ansible updates triggered'
+  async: 1
+  poll: 0
+  become: true
+  ignore_errors: true
+  when: not vagrant.stat.exists

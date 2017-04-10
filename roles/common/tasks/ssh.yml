@@ -1,0 +1,51 @@
+---
+- name: Create .ssh folder
+  file:
+    path: ~/.ssh
+    state: directory
+    mode: 0700
+
+- name: SSH additional settings.
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  become: true
+  notify: Reboot macOS
+  with_items:
+  - regexp: '^#?AddressFamily\s'
+    line: AddressFamily inet
+  - regexp: '^#?Protocol\s'
+    line: Protocol 2
+  - regexp: '^#?LoginGraceTime\s'
+    line: LoginGraceTime 30
+  - regexp: '^#?PermitRootLogin\s'
+    line: PermitRootLogin no
+  - regexp: '^#?MaxAuthTries\s'
+    line: MaxAuthTries 3
+  - regexp: '^#?PasswordAuthentication\s'
+    line: PasswordAuthentication no
+  - regexp: '^#?UseDNS\s'
+    line: UseDNS no
+
+- name: Judges whether this Mac is remote control by Vagrant.
+  stat:
+    path: /vagrant
+  register: vagrant
+
+- name: SSH Change Port. (Set files)
+  template:
+    src: ssh-alt.plist.j2
+    dest: /Library/LaunchDaemons/ssh-alt.plist
+  become: true
+  when: not vagrant.stat.exists
+  with_items:
+  - port: 8868
+
+- name: SSH Change Port. (load new port)
+  shell: launchctl load -w /Library/LaunchDaemons/ssh-alt.plist
+  register: launchctl
+  changed_when: '"service already loaded" in launchctl.stdout'
+  become: true
+  notify: Reboot macOS
+  when: not vagrant.stat.exists
