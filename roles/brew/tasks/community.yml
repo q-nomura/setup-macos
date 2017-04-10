@@ -6,10 +6,10 @@
   with_items:
   - franz
 
-- name: Install community and sns tools from mas.
-  shell: 'mas install {{ item }}'
-  register: mas
-  changed_when: '"already installed" in mas.stdout'
-  with_items:
-  - 409789998 #Twitter
-  - 539883307 #LINE
+# - name: Install community and sns tools from mas.
+#   shell: 'mas install {{ item }}'
+#   register: mas
+#   changed_when: '"already installed" in mas.stdout'
+#   with_items:
+#   - 409789998 #Twitter
+#   - 539883307 #LINE

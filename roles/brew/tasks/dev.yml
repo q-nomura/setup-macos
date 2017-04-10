@@ -26,10 +26,10 @@
   # - visual-studio-code-insiders
   - visual-studio
 
-- name: Install develop tools from mas.
-  shell: 'mas install {{ item }}'
-  register: mas
-  changed_when: '"already installed" in mas.stdout'
-  with_items:
-  - 497799835 # Xcode
-  - 883878097 # macOS Server
+# - name: Install develop tools from mas.
+#   shell: 'mas install {{ item }}'
+#   register: mas
+#   changed_when: '"already installed" in mas.stdout'
+#   with_items:
+#   - 497799835 # Xcode
+#   - 883878097 # macOS Server
