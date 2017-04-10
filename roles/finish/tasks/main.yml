@@ -8,5 +8,5 @@
   shell: osascript -e 'tell application "System Events" to delete login item "setup"'
   when: not vagrant.stat.exists
 
-- include: ../../common/handlers/reboot.yml
+# - include: ../../common/handlers/reboot.yml
 
