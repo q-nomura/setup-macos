@@ -12,5 +12,4 @@ osa_args="{path:\"${path}\", hidden:false, name:\"${0##*/}\"}"
 #osascript -e "${tellto}delete login item \"${0##*/}\""
 osascript -e "${tellto}make login item at end with properties ${osa_args}"
 
-ansible-playbook -i hosts --ask-sudo-pass -v playbook.yml
-
+ansible-playbook -i hosts --ask-pass --ask-sudo-pass -v playbook.yml
