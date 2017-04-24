@@ -1,0 +1,14 @@
+---
+#- name: Assign wheel group to current user.
+#  user:
+#    name: '{{ ansible_env.USER }}'
+#    groups: wheel
+#  become: yes
+
+#- name: Sudo without password
+#  lineinfile:
+#    dest: /etc/sudoers
+#    regexp: '%wheel ALL=\(ALL\) NOPASSWD: ALL'
+#    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+#  become: yes
+
