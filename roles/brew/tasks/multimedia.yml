@@ -1,12 +1,18 @@
 ---
-- name: Install multi-media tools from Homebrew cask.
+- name: Install Metasequoia from Homebrew cask.
   homebrew_cask:
-    name: '{{ item }}'
+    name: metasequoia
     state: present
-  with_items:
-  - metasequoia
-  - obs
-  - adobe-creative-cloud
+
+- name: Install OBS from Homebrew cask.
+  homebrew_cask:
+    name: obs
+    state: present
+
+- name: Install Adobe Creative Cloud from Homebrew cask.
+  homebrew_cask:
+    name: adobe-creative-cloud
+    state: present
 
 # - name: Install multi-media tools from mas.
 #   shell: 'mas install {{ item }}'

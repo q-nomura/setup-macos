@@ -1,10 +1,25 @@
 ---
-- name: Install virtualization tools from Homebrew cask.
+- name: Install Palallels Desktop from Homebrew cask.
   homebrew_cask:
-    name: '{{ item }}'
+    name: parallels-desktop
     state: present
-  with_items:
-  - parallels-desktop
-  - vagrant
-  - virtualbox
-  - docker-toolbox
+
+- name: Install Virtualbox from Homebrew cask.
+  homebrew_cask:
+    name: virtualbox
+    state: present
+
+- name: Install Vagrant from Homebrew cask.
+  homebrew_cask:
+    name: vagrant
+    state: present
+
+- name: Install Palallels Desktop from Homebrew cask.
+  homebrew_cask:
+    name: parallels-desktop
+    state: present
+
+- name: Install Docker Toolbox tools from Homebrew cask.
+  homebrew_cask:
+    name: docker-toolbox
+    state: present

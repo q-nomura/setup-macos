@@ -1,10 +1,8 @@
 ---
-- name: Install community and sns tools from Homebrew cask.
+- name: Install Franz from Homebrew cask.
   homebrew_cask:
-    name: '{{ item }}'
+    name: franz
     state: present
-  with_items:
-  - franz
 
 # - name: Install community and sns tools from mas.
 #   shell: 'mas install {{ item }}'
