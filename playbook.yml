@@ -1,6 +1,11 @@
 ---
 - name: Setup dev environment for macOS.
   hosts: all
+  vars_prompt:
+    - name: computername
+      prompt: Please set the local host name of this Mac.
+      default: mymac.local
+      private: no
   roles:
     - common
     - brew

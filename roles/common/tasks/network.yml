@@ -1,0 +1,20 @@
+---
+# $ scutil --get ComputerName
+# HOKARI-no-MacBook-Pro
+# $ scutil --get LocalHostName
+# HOKARI-no-MacBook-Pro
+
+# - name: set computername
+#   shell: scutil --set ComputerName {{ computername }}
+#   become: yes
+#   when: ansible_hostname != computername
+
+# - name: set hostname
+#   shell: scutil --set HostName {{ computername }}
+#   become: yes
+#   when: ansible_hostname != computername
+
+# - name: set localhostname
+#   shell: scutil --set LocalHostName {{ computername }}
+#   become: yes
+#   when: ansible_hostname != computername
