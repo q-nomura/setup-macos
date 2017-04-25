@@ -11,8 +11,6 @@
     default: 8868
     private: no
   roles:
-    - role: common
-    - role: brew
-    - role: mas
-      tags: icloud
-    - role: finish
+    - common
+    - brew
+    - finish

@@ -37,6 +37,5 @@ Vagrant.configure('2') do |config|
     ansible.playbook = 'playbook.yml'
     ansible.verbose = true
     ansible.install = false
-    ansible.skip_tags = 'icloud'
   end
 end
