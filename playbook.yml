@@ -4,7 +4,7 @@
   vars_prompt:
     - name: computername
       prompt: Please set the local host name of this Mac.
-      default: mymac.local
+      default: my-mac
       private: no
   roles:
     - common
