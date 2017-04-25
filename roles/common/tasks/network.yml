@@ -10,11 +10,11 @@
   changed_when: false
 
 - name: set computer name
-  shell: scutil --set ComputerName {{ computername }}
+  shell: 'scutil --set ComputerName {{ computername }}'
   become: yes
   when: pcname.stdout != computername
 
 - name: set host name
-  shell: scutil --set LocalHostName {{ computername }}
+  shell: 'scutil --set LocalHostName {{ computername }}'
   become: yes
   when: pcname.stdout != computername

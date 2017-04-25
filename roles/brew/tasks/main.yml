@@ -1,9 +1,4 @@
 ---
-- name: Run this task before homebrew_cask module, so that sudo cache gets refreshed.
-  shell: echo NOOP
-  become: yes
-  changed_when: false
-
 - include: runtimes.yml
 - include: utils.yml
 - include: browsers.yml
