@@ -15,4 +15,4 @@ sudo systemsetup -setremotelogin on
 sudo dseditgroup -o create -q com.apple.access_ssh
 sudo dseditgroup -o edit -a admin -t group com.apple.access_ssh
 
-ansible-playbook -i hosts -v playbook.yml
+ansible-playbook -i hosts -v playbook.yml --skip-tags=icloud
