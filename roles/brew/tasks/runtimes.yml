@@ -1,8 +1,10 @@
 ---
-- name: Install .NET Framework from Homebrew cask.
-  homebrew_cask:
-    name: dotnet
-    state: present
+- name: Install runtime tools from Homebrew.
+  homebrew:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+  - mono
 
 - name: Install Silverlight from Homebrew cask.
   homebrew_cask:

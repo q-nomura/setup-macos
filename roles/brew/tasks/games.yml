@@ -3,3 +3,8 @@
   homebrew_cask:
     name: minecraft
     state: present
+
+- name: Install Steam from Homebrew cask.
+  homebrew_cask:
+    name: steam
+    state: present
