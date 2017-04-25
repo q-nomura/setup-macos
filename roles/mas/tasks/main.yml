@@ -1,0 +1,4 @@
+---
+- include: multimedia.yml
+- include: community.yml
+- include: office.yml
