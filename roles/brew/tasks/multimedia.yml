@@ -13,11 +13,3 @@
   homebrew_cask:
     name: adobe-creative-cloud
     state: present
-
-# - name: Install multi-media tools from mas.
-#   shell: 'mas install {{ item }}'
-#   register: mas
-#   changed_when: '"already installed" in mas.stdout'
-#   with_items:
-#   - 408981434 #iMovie
-#   - 682658836 #GarageBand

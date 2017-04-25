@@ -5,13 +5,7 @@
     state: latest
   with_items:
   - gpg
+  - openssh
   - sl
   - wget
   - xz
-
-# - name: Install utility tools from mas.
-#   shell: 'mas install {{ item }}'
-#   register: mas
-#   changed_when: '"already installed" in mas.stdout'
-#   with_items:
-#   - 748212890 #Memory Cleaner

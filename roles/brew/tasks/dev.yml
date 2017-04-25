@@ -6,7 +6,6 @@
   with_items:
   - imagemagick
   - npm
-  - openssh
   - vim
   - hub
 

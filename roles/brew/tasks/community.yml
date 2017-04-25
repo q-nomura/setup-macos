@@ -3,11 +3,3 @@
   homebrew_cask:
     name: franz
     state: present
-
-# - name: Install community and sns tools from mas.
-#   shell: 'mas install {{ item }}'
-#   register: mas
-#   changed_when: '"already installed" in mas.stdout'
-#   with_items:
-#   - 409789998 #Twitter
-#   - 539883307 #LINE

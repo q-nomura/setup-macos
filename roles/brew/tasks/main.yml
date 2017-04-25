@@ -4,7 +4,6 @@
 - include: browsers.yml
 - include: virtualization.yml
 - include: webstorages.yml
-- include: office.yml
 - include: multimedia.yml
 - include: community.yml
 - include: games.yml
