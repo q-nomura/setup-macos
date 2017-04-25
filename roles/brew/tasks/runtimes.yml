@@ -35,3 +35,8 @@
   homebrew_cask:
     name: flash-player-debugger-npapi
     state: present
+
+- name: Install Unity Web player from Homebrew cask.
+  homebrew_cask:
+    name: unity-web-player
+    state: present
