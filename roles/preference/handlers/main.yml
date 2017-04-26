@@ -1,0 +1,6 @@
+---
+- name: Reload Dock
+  shell: killall Dock
+  
+- name: Reload SystemUIServer
+  shell: killall SystemUIServer
