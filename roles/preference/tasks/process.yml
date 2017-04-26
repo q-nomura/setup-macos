@@ -1,0 +1,18 @@
+---
+- name: Collect show the main window when launching Activity Monitor
+  shell: defaults read com.apple.ActivityMonitor OpenMainWindow
+  register: activity_open_window
+  changed_when: false
+
+- name: Show the main window when launching Activity Monitor
+  shell: defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+  when: '"1" not in activity_open_window.stdout'
+
+- name: Collect show processes category in Activity Monitor
+  shell: defaults read com.apple.ActivityMonitor ShowCategory
+  register: activity_category
+  changed_when: false
+
+- name: Show all processes in Activity Monitor
+  shell: defaults write com.apple.ActivityMonitor ShowCategory -int 100
+  when: '"100" not in activity_category.stdout'

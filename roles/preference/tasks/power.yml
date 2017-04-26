@@ -1,0 +1,19 @@
+---
+- name: Collect power management setting
+  shell: pmset -g
+  register: power_management
+  changed_when: false
+
+- name: Set standby(hibernation) delay to 24 hours
+  shell: pmset -a standbydelay 86400
+  become: true
+  when: '"standbydelay         86400" not in power_management.stdout'
+
+- name: Collect restore window on rebooted
+  shell: defaults read com.apple.systempreferences NSQuitAlwaysKeepsWindows
+  register: restore_window_reboot
+  changed_when: false
+
+- name: Disable restore window on rebooted
+  shell: defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+  when: '"0" not in power_management.stdout'

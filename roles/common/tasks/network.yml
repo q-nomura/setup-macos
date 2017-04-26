@@ -9,12 +9,21 @@
   register: hostname
   changed_when: false
 
-- name: set computer name
+- name: Set computer name
   shell: 'scutil --set ComputerName {{ computername }}'
   become: yes
   when: pcname.stdout != computername
 
-- name: set host name
+- name: Set host name
   shell: 'scutil --set LocalHostName {{ computername }}'
   become: yes
-  when: pcname.stdout != computername
+  when: hostname.stdout != computername
+
+- name: Collect NetBIOS name
+  shell: defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName
+  register: netbiosname
+  changed_when: false
+
+- name: Set NetBIOS name
+  shell: 'defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "{{ computername }}"'
+  when: netbiosname.stdout != computername

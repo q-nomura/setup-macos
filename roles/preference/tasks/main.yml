@@ -1,1 +1,4 @@
 ---
+- include: power.yml
+- include: process.yml
+- include: finder.yml

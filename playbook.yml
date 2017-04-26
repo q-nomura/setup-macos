@@ -12,5 +12,6 @@
     private: no
   roles:
     - common
+    - preference
     - brew
     - finish
