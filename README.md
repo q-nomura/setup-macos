@@ -24,3 +24,6 @@
 * App Store: macOS アップデートをインストール
 * App Store: 購入とApp内課金 -> 15分後は要求
 * App Store: 無料ダウンロード -> パスワードは不要
+
+http://baqamore.hatenablog.com/entry/2013/07/31/222438
+https://github.com/mathiasbynens/dotfiles/blob/master/.macos
