@@ -1,13 +1,9 @@
 # Setup for danmaq's desktop mac.
 
-## memo
+I automated the setup procedure of my Mac with Ansible.
+If you look at this you'll be a reference for automating your Mac.
 
-* Download and deploy key pairs.
-    * How get password?
-* Install Adobe CC Apps
-* Docker-tools settings
-* 文字化け on SSH
+## Advice
 
-## impossible?
-
-* OSX upgrade (ex: lion -> sierra)
+Even if you run this setup as it is, it will not be the environment you want.
+Beauty is in the eye of the beholder.
