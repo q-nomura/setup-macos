@@ -1,13 +1,23 @@
 ---
-- name: Install web-storage tools from Homebrew cask.
+- name: Install Dropbox from Homebrew cask.
   homebrew_cask:
-    name: '{{ item }}'
+    name: dropbox
     state: present
-  with_items:
-  - dropbox
-  - onedrive
-  - google-drive
-  - adobe-creative-cloud
+
+- name: Install OneDrive from Homebrew cask.
+  homebrew_cask:
+    name: onedrive
+    state: present
+
+- name: Install Google Drive from Homebrew cask.
+  homebrew_cask:
+    name: google-drive
+    state: present
+
+- name: Install Adobe Creative Cloud from Homebrew cask.
+  homebrew_cask:
+    name: adobe-creative-cloud
+    state: present
 
 # - name: Install web-storage tools from mas.
 #   shell: 'mas install {{ item }}'

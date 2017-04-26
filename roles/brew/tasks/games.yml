@@ -1,7 +1,5 @@
 ---
-- name: Install games from Homebrew cask.
+- name: Install Minecraft from Homebrew cask.
   homebrew_cask:
-    name: '{{ item }}'
+    name: minecraft
     state: present
-  with_items:
-  - minecraft

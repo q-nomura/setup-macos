@@ -1,0 +1,20 @@
+---
+- name: Collect current computer name.
+  shell: scutil --get ComputerName
+  register: pcname
+  changed_when: false
+
+- name: Collect current host name.
+  shell: scutil --get LocalHostName
+  register: hostname
+  changed_when: false
+
+- name: set computer name
+  shell: 'scutil --set ComputerName {{ computername }}'
+  become: yes
+  when: pcname.stdout != computername
+
+- name: set host name
+  shell: 'scutil --set LocalHostName {{ computername }}'
+  become: yes
+  when: pcname.stdout != computername

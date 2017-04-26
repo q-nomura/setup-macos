@@ -1,11 +1,10 @@
 ---
 - include: runtimes.yml
-- include: dev.yml
-- include: virtualization.yml
-- include: browsers.yml
-- include: webstorages.yml
-- include: office.yml
 - include: utils.yml
+- include: browsers.yml
+- include: virtualization.yml
+- include: webstorages.yml
 - include: multimedia.yml
 - include: community.yml
 - include: games.yml
+- include: dev.yml

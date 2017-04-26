@@ -8,5 +8,12 @@
   shell: osascript -e 'tell application "System Events" to delete login item "setup"'
   when: not vagrant.stat.exists
 
-# - include: ../../common/handlers/reboot.yml
+- name: Locking sudo
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '{{ ansible_env.USER }} ALL=\(ALL\) NOPASSWD: ALL'
+    line: ''
+    validate: visudo -cf %s
+  become: yes
 
+# - include: ../../common/handlers/reboot.yml

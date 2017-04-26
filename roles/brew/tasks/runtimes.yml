@@ -1,13 +1,35 @@
 ---
-- name: Install runtimes from Homebrew cask.
+- name: Install .NET Framework from Homebrew cask.
   homebrew_cask:
-    name: '{{ item }}'
+    name: dotnet
     state: present
-  with_items:
-  - dotnet
-  - silverlight
-  - java
-  #- adobe-air # Too heavy.
-  - flash-player-debugger
-  - flash-player-debugger-ppapi
-  - flash-player-debugger-npapi
+
+- name: Install Silverlight from Homebrew cask.
+  homebrew_cask:
+    name: silverlight
+    state: present
+
+- name: Install Java JRE from Homebrew cask.
+  homebrew_cask:
+    name: java
+    state: present
+
+- name: Install Adobe AIR from Homebrew cask.
+  homebrew_cask:
+    name: adobe-air
+    state: present
+
+- name: Install Flash Player Debugger from Homebrew cask.
+  homebrew_cask:
+    name: flash-player-debugger
+    state: present
+
+- name: Install Flash Player Debugger (PPAPI) from Homebrew cask.
+  homebrew_cask:
+    name: flash-player-debugger-ppapi
+    state: present
+
+- name: Install Flash Player Debugger (NPAPI) from Homebrew cask.
+  homebrew_cask:
+    name: flash-player-debugger-npapi
+    state: present

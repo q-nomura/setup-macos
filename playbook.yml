@@ -1,6 +1,15 @@
 ---
 - name: Setup dev environment for macOS.
   hosts: all
+  vars_prompt:
+  - name: computername
+    prompt: Please set the local host name of this Mac.
+    default: my-mac
+    private: no
+  - name: ssh_alt
+    prompt: Please change the SSH port.
+    default: 8868
+    private: no
   roles:
     - common
     - brew
