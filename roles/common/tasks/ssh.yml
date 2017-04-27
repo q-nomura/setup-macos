@@ -5,7 +5,7 @@
     state: directory
     mode: 0700
 
-- name: SSH additional settings.
+- name: SSH daemon additional settings.
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: "{{ item.regexp }}"
@@ -27,6 +27,18 @@
     line: PasswordAuthentication no
   - regexp: '^#?UseDNS\s'
     line: UseDNS no
+  - regexp: '^#?GSSAPIAuthentication\s'
+    line: GSSAPIAuthentication no
+
+- name: SSH client additional settings.
+  lineinfile:
+    dest: /etc/ssh/ssh_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  become: true
+  with_items:
+  - regexp: '^#?\s*GSSAPIKeyExchange\s'
+    line: GSSAPIKeyExchange no
 
 - name: Judges whether this Mac is remote control by Vagrant.
   stat:

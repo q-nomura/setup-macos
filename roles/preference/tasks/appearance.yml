@@ -39,3 +39,13 @@
 - name: Set enable animated focus ring
   shell: defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool YES
   when: animated_focus_ring.stdout != "1"
+
+- name: Collect window resize interval
+  shell: defaults write NSGlobalDomain NSWindowResizeTime
+  register: window_resize_time
+  changed_when: false
+  ignore_errors: true
+
+- name: Set window resize interval to 0.1sec
+  shell: defaults write NSGlobalDomain NSWindowResizeTime -float 0.1
+  when: window_resize_time.stdout != "0.1"
