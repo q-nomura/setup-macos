@@ -3,6 +3,7 @@
   shell: pmset -g
   register: power_management
   changed_when: false
+  ignore_errors: true
 
 - name: Set standby(hibernation) delay to 24 hours
   shell: pmset -a standbydelay 86400
@@ -13,7 +14,8 @@
   shell: defaults read com.apple.systempreferences NSQuitAlwaysKeepsWindows
   register: restore_window_reboot
   changed_when: false
+  ignore_errors: true
 
 - name: Disable restore window on rebooted
-  shell: defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
-  when: '"0" not in power_management.stdout'
+  shell: defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool NO
+  when: restore_window_reboot.stdout != "0"

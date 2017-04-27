@@ -1,0 +1,41 @@
+---
+- name: Collect sidebar icons size
+  shell: defaults read NSGlobalDomain NSTableViewDefaultSizeMode
+  register: sidebar_size
+  changed_when: false
+  ignore_errors: true
+
+- name: Set sidebar icons size
+  shell: defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 3
+  when: sidebar_size.stdout != "3"
+
+- name: Collect scrollbar appearance
+  shell: defaults read NSGlobalDomain AppleShowScrollBars
+  register: show_scroll_bars
+  changed_when: false
+  ignore_errors: true
+
+- name: Set scrollbar appearance to Automatic
+  shell: defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
+  when: show_scroll_bars.stdout != "Automatic"
+
+# Hiddened
+- name: Collect enabled focus ring
+  shell: defaults read NSGlobalDomain NSAutomaticFocusRingEnabled
+  register: focus_ring
+  changed_when: false
+  ignore_errors: true
+
+- name: Set enable focus ring
+  shell: defaults write NSGlobalDomain NSAutomaticFocusRingEnabled -bool YES
+  when: focus_ring.stdout != "1"
+
+- name: Collect animated focus ring
+  shell: defaults read NSGlobalDomain NSUseAnimatedFocusRing
+  register: animated_focus_ring
+  changed_when: false
+  ignore_errors: true
+
+- name: Set enable animated focus ring
+  shell: defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool YES
+  when: animated_focus_ring.stdout != "1"

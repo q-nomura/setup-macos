@@ -1,4 +1,6 @@
 ---
+- include: appearance.yml
 - include: power.yml
 - include: process.yml
+- include: accessibility.yml
 - include: finder.yml

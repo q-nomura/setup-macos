@@ -1,9 +1,1 @@
 ---
-- name: Collect sidebar icons size
-  shell: defaults read NSGlobalDomain NSTableViewDefaultSizeMode
-  register: sidebar_size
-  changed_when: false
-
-- name: Set sidebar icons size
-  shell: defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 3
-  when: '"3" not in sidebar_size.stdout'
