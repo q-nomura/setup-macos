@@ -9,13 +9,3 @@
   shell: pmset -a standbydelay 86400
   become: true
   when: '"standbydelay         86400" not in power_management.stdout'
-
-- name: Collect restore window on rebooted
-  shell: defaults read com.apple.systempreferences NSQuitAlwaysKeepsWindows
-  register: restore_window_reboot
-  changed_when: false
-  ignore_errors: true
-
-- name: Disable restore window on rebooted
-  shell: defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool NO
-  when: restore_window_reboot.stdout != "0"

@@ -1,10 +1,8 @@
 ---
-- name: Collect transparency in the menu bar and elsewhere
-  shell: defaults read com.apple.universalaccess reduceTransparency
-  register: reduce_transparency
-  changed_when: false
-  ignore_errors: true
-
-- name: Disable reduce transparency in the menu bar and elsewhere
-  shell: defaults write com.apple.universalaccess reduceTransparency -bool NO
-  when: reduce_transparency.stdout != "0"
+- include: _defaults.yml
+  with_items:
+  - desc: Disable reduce transparency in the menu bar and elsewhere.
+    path: com.apple.universalaccess
+    key: reduceTransparency
+    value: -bool NO
+    expect: 0
