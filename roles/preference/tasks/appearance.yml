@@ -11,33 +11,8 @@
     key: AppleShowScrollBars
     value: -string "Automatic"
     expect: Automatic
-  - desc: Use focus ring.
-    path: NSGlobalDomain
-    key: NSAutomaticFocusRingEnabled
-    value: -bool YES
-    expect: 1
-  - desc: Use focus ring with animation.
-    path: NSGlobalDomain
-    key: NSUseAnimatedFocusRing
-    value: -bool YES
-    expect: 1
-  - desc: Set 0.1sec when resize panel time span.
-    path: NSGlobalDomain
-    key: NSWindowResizeTime
-    value: -float 0.1
-    expect: 0.1
-  - desc: Expand to default save panel. (1/2)
-    path: NSGlobalDomain
-    key: NSNavPanelExpandedStateForSaveMode
-    value: -bool YES
-    expect: 1
-  - desc: Expand to default save panel. (2/2)
-    path: NSGlobalDomain
-    key: NSNavPanelExpandedStateForSaveMode2
-    value: -bool YES
-    expect: 1
-  - desc: Save to iCloud by default dest.
-    path: NSGlobalDomain
-    key: NSDocumentSaveNewDocumentsToCloud
-    value: -bool YES
-    expect: 1
+  - desc: Disable to resume windows on reboot.
+    path: com.apple.systempreferences
+    key: NSQuitAlwaysKeepsWindows
+    value: -bool NO
+    expect: 0
