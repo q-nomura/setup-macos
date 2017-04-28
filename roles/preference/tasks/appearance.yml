@@ -1,51 +1,43 @@
 ---
-- name: Collect sidebar icons size
-  shell: defaults read NSGlobalDomain NSTableViewDefaultSizeMode
-  register: sidebar_size
-  changed_when: false
-  ignore_errors: true
-
-- name: Set sidebar icons size
-  shell: defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 3
-  when: sidebar_size.stdout != "3"
-
-- name: Collect scrollbar appearance
-  shell: defaults read NSGlobalDomain AppleShowScrollBars
-  register: show_scroll_bars
-  changed_when: false
-  ignore_errors: true
-
-- name: Set scrollbar appearance to Automatic
-  shell: defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
-  when: show_scroll_bars.stdout != "Automatic"
-
-# Hiddened
-- name: Collect enabled focus ring
-  shell: defaults read NSGlobalDomain NSAutomaticFocusRingEnabled
-  register: focus_ring
-  changed_when: false
-  ignore_errors: true
-
-- name: Set enable focus ring
-  shell: defaults write NSGlobalDomain NSAutomaticFocusRingEnabled -bool YES
-  when: focus_ring.stdout != "1"
-
-- name: Collect animated focus ring
-  shell: defaults read NSGlobalDomain NSUseAnimatedFocusRing
-  register: animated_focus_ring
-  changed_when: false
-  ignore_errors: true
-
-- name: Set enable animated focus ring
-  shell: defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool YES
-  when: animated_focus_ring.stdout != "1"
-
-- name: Collect window resize interval
-  shell: defaults write NSGlobalDomain NSWindowResizeTime
-  register: window_resize_time
-  changed_when: false
-  ignore_errors: true
-
-- name: Set window resize interval to 0.1sec
-  shell: defaults write NSGlobalDomain NSWindowResizeTime -float 0.1
-  when: window_resize_time.stdout != "0.1"
+- include: _defaults.yml
+  with_items:
+  - desc: Set sidebar icon size to large.
+    path: NSGlobalDomain
+    key: NSTableViewDefaultSizeMode
+    value: -int 3
+    expect: 3
+  - desc: Set automatic view to scroll bar.
+    path: NSGlobalDomain
+    key: AppleShowScrollBars
+    value: -string "Automatic"
+    expect: Automatic
+  - desc: Use focus ring.
+    path: NSGlobalDomain
+    key: NSAutomaticFocusRingEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Use focus ring with animation.
+    path: NSGlobalDomain
+    key: NSUseAnimatedFocusRing
+    value: -bool YES
+    expect: 1
+  - desc: Set 0.1sec when resize panel time span.
+    path: NSGlobalDomain
+    key: NSWindowResizeTime
+    value: -float 0.1
+    expect: 0.1
+  - desc: Expand to default save panel. (1/2)
+    path: NSGlobalDomain
+    key: NSNavPanelExpandedStateForSaveMode
+    value: -bool YES
+    expect: 1
+  - desc: Expand to default save panel. (2/2)
+    path: NSGlobalDomain
+    key: NSNavPanelExpandedStateForSaveMode2
+    value: -bool YES
+    expect: 1
+  - desc: Save to iCloud by default dest.
+    path: NSGlobalDomain
+    key: NSDocumentSaveNewDocumentsToCloud
+    value: -bool YES
+    expect: 1

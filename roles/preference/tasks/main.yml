@@ -1,6 +1,7 @@
 ---
 - include: appearance.yml
 - include: power.yml
+- include: printer_scanner.yml
 - include: process.yml
 - include: accessibility.yml
 - include: finder.yml

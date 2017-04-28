@@ -1,0 +1,8 @@
+---
+- include: _defaults.yml
+  with_items:
+  - desc: Set sidebar icon size to large.
+    path: com.apple.print.PrintingPrefs
+    key: Quit When Finished
+    value: -bool YES
+    expect: 1
