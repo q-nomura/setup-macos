@@ -6,3 +6,13 @@
     key: reduceTransparency
     value: -bool NO
     expect: 0
+  - desc: Disable scroll gesture with the Ctrl (^) modifier key to zoom.
+    path: com.apple.universalaccess
+    key: closeViewScrollWheelToggle
+    value: -bool NO
+    expect: 0
+  - desc: Disable Follow the keyboard focus while zoomed in.
+    path: com.apple.universalaccess
+    key: closeViewZoomFollowsFocus
+    value: -bool NO
+    expect: 0

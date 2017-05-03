@@ -41,3 +41,33 @@
     key: DevMode
     value: -bool YES
     expect: 1
+  - desc: Enable automatic capitalization at typing.
+    path: NSGlobalDomain
+    key: NSAutomaticCapitalizationEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Enable smart dashesat at typing.
+    path: NSGlobalDomain
+    key: NSAutomaticDashSubstitutionEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Enable automatic period at typing.
+    path: NSGlobalDomain
+    key: NSAutomaticPeriodSubstitutionEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Enable smart quotes at typing.
+    path: NSGlobalDomain
+    key: NSAutomaticQuoteSubstitutionEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Enable auto correct at typing.
+    path: NSGlobalDomain
+    key: NSAutomaticSpellingCorrectionEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Enable press-and-hold for keys in favor of key repeat.
+    path: NSGlobalDomain
+    key: ApplePressAndHoldEnabled
+    value: -bool YES
+    expect: 1

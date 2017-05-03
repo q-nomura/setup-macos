@@ -1,0 +1,8 @@
+---
+- include: _defaults.yml
+  with_items:
+  - desc: Disable full keyboard access for all controls.
+    path: NSGlobalDomain
+    key: AppleKeyboardUIMode
+    value: -int 0
+    expect: 0

@@ -11,7 +11,7 @@
     default: 8868
     private: no
   roles:
-    - common
+    # - common
     - preference
-    - brew
-    - finish
+    # - brew
+    # - finish

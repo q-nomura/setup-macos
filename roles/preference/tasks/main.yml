@@ -1,8 +1,12 @@
 ---
 - include: appearance.yml
+- include: international.yml
 - include: power.yml
-- include: printer_scanner.yml
-- include: process.yml
+- include: keyboard.yml
+- include: mouse.yml
+- include: printer.yml
+- include: sound.yml
 - include: accessibility.yml
 - include: hidden.yml
+- include: process.yml
 - include: finder.yml

@@ -7,4 +7,4 @@
 
 - name: 'Set settings: {{ item.desc }}'
   shell: 'defaults write {{ item.path }} "{{ item.key }}" {{ item.value }}'
-  when: got.stdout != item.expect|string
+  when: 'item.expect|string not in got.stdout'
