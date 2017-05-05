@@ -1,4 +1,9 @@
 ---
+- name: Upgrade brew.
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+
 - name: Install mas.
   homebrew:
     name: mas
@@ -7,3 +12,20 @@
 - name: Install Homebrew cask.
   homebrew_tap:
     name: caskroom/cask
+
+- name: Create folders (1/2)
+  file:
+    path: '{{ item }}'
+    mode: 0700
+    state: directory
+  with_items:
+  - ~/.ssh
+  - ~/bin
+
+- name: Create folders (2/2)
+  file:
+    path: '{{ item }}'
+    state: directory
+  with_items:
+  - ~/src
+  - ~/src/Repos

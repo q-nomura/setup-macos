@@ -3,3 +3,8 @@
   homebrew_cask:
     name: franz
     state: present
+
+- name: Install Skype from Homebrew cask.
+  homebrew_cask:
+    name: skype
+    state: present

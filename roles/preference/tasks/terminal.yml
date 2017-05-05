@@ -1,0 +1,13 @@
+---
+- include: _defaults.yml
+  with_items:
+  - desc: Set using encode in Terminal
+    path: com.apple.terminal
+    key: StringEncodings
+    value: -array 3 4 8 2147483649 2147485224
+    expect: 2147485224
+  - desc: Enable Secure Keyboard Entry in Terminal
+    path: com.apple.terminal
+    key: SecureKeyboardEntry
+    value: -bool YES
+    expect: 1

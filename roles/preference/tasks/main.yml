@@ -1,12 +1,15 @@
 ---
 - include: appearance.yml
+- include: screen.yml
+- include: dock.yml
+- include: mission-control.yml
 - include: international.yml
 - include: power.yml
 - include: keyboard.yml
 - include: mouse.yml
 - include: printer.yml
 - include: sound.yml
+- include: appstore.yml
 - include: accessibility.yml
-- include: hidden.yml
-- include: process.yml
 - include: finder.yml
+- include: otherapps.yml

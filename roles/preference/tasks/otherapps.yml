@@ -1,0 +1,63 @@
+---
+- include: _defaults.yml
+  with_items:
+  - desc: Copy email addresses and name ... Mail
+    path: com.apple.mail
+    key: AddressesIncludeNameOnPasteboard
+    value: -bool YES
+    expect: 1
+  - desc: Disable inline attachments (just show the icons) ... Mail
+    path: com.apple.mail
+    key: DisableInlineAttachmentViewing
+    value: -bool YES
+    expect: 1
+  - desc: Show the main window when launched ... Activity Monitor
+    path: com.apple.ActivityMonitor
+    key: OpenMainWindow
+    value: -bool YES
+    expect: 1
+  - desc: Visualize CPU usage in the Dock icon ... Activity Monitor
+    path: com.apple.ActivityMonitor
+    key: IconType
+    value: -int 5
+    expect: 5
+  - desc: Show all processes ... Activity Monitor
+    path: com.apple.ActivityMonitor
+    key: ShowCategory
+    value: -int 0
+    expect: 0
+  - desc: Use plain text mode for new documents ... TextEdit
+    path: com.apple.TextEdit
+    key: RichText
+    value: -int 0
+    expect: 0
+  - desc: Open files as UTF-8 ... TextEdit
+    path: com.apple.TextEdit
+    key: PlainTextEncoding
+    value: -int 4
+    expect: 4
+  - desc: Save files as UTF-8 ... TextEdit
+    path: com.apple.TextEdit
+    key: PlainTextEncodingForWrite
+    value: -int 4
+    expect: 4
+  - desc: Enable the debug menu ... Disk Utility
+    path: com.apple.DiskUtility
+    key: DUDebugMenuEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Enable the advanced image option ... Disk Utility
+    path: com.apple.DiskUtility
+    key: advanced-image-options
+    value: -bool YES
+    expect: 1
+  - desc: Auto-play videos when opened ... QuickTime Player
+    path: com.apple.QuickTimePlayerX
+    key: MGPlayMovieOnOpen
+    value: -bool YES
+    expect: 1
+  - desc: Enable the hidden Develop menu ... Twitter
+    path: com.twitter.twitter-mac
+    key: ShowDevelopMenu
+    value: -bool YES
+    expect: 1
