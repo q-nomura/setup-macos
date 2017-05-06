@@ -12,4 +12,5 @@
 - include: appstore.yml
 - include: accessibility.yml
 - include: finder.yml
+- include: terminal.yml
 - include: otherapps.yml

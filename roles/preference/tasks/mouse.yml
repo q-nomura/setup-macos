@@ -1,7 +1,7 @@
 ---
 - include: _defaults.yml
   with_items:
-  - desc: Disable Natural-scrolling. (Lion-style)
+  - desc: Mouse / Disable Natural-scrolling. (Lion-style)
     path: NSGlobalDomain
     key: com.apple.swipescrolldirection
     value: -bool NO

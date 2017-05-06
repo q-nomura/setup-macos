@@ -1,6 +1,7 @@
 ---
 - name: Setup dev environment for macOS.
   hosts: all
+  connection: local
   vars_prompt:
   - name: computername
     prompt: Please set the local host name of this Mac.

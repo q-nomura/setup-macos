@@ -1,17 +1,17 @@
 ---
 - include: _defaults.yml
   with_items:
-  - desc: Increase sound quality for Bluetooth headphones/headsets (1/3)
+  - desc: Sound / Increase sound quality for Bluetooth headphones/headsets (1/3)
     path: com.apple.BluetoothAudioAgent
     key: Apple Bitpool Max (editable)
     value: -int 80
     expect: 80
-  - desc: Increase sound quality for Bluetooth headphones/headsets (2/3)
+  - desc: Sound / Increase sound quality for Bluetooth headphones/headsets (2/3)
     path: com.apple.BluetoothAudioAgent
     key: Apple Bitpool Min (editable)
     value: -int 53
     expect: 53
-  - desc: Increase sound quality for Bluetooth headphones/headsets (3/3)
+  - desc: Sound / Increase sound quality for Bluetooth headphones/headsets (3/3)
     path: com.apple.BluetoothAudioAgent
     key: Apple Initial Bitpool (editable)
     value: -int 48

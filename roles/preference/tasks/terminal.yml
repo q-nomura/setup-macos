@@ -1,13 +1,32 @@
 ---
 - include: _defaults.yml
   with_items:
-  - desc: Set using encode in Terminal
+  - desc: Terminal / Set using encode
     path: com.apple.terminal
     key: StringEncodings
     value: -array 3 4 8 2147483649 2147485224
     expect: 2147485224
-  - desc: Enable Secure Keyboard Entry in Terminal
+  - desc: Terminal / Enable Secure Keyboard Entry
     path: com.apple.terminal
     key: SecureKeyboardEntry
     value: -bool YES
     expect: 1
+
+- name: Terminal / Create .bash_profile
+  file:
+    path: ~/.bash_profile
+    mode: 0755
+    state: touch
+
+- name: Terminal / Set .bash_profile
+  lineinfile:
+    dest: ~/.bash_profile
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+  - regexp: 'alias\sll='
+    line: alias ll='ls -l'
+  - regexp: 'alias\sla='
+    line: alias la='ls -a'
+  - regexp: 'alias\sls='
+    line: alias ls='ls -G'
