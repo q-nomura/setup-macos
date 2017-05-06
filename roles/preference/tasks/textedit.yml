@@ -1,0 +1,43 @@
+---
+- include: _defaults.yml
+  with_items:
+  - desc: TextEdit / Use plain text mode for new documents 
+    path: com.apple.TextEdit
+    key: RichText
+    value: -bool NO
+    expect: 0
+  - desc: TextEdit / Show page breaks 
+    path: com.apple.TextEdit
+    key: ShowPageBreaks
+    value: -bool YES
+    expect: 1
+  - desc: TextEdit / Use check grammar with spelling
+    path: com.apple.TextEdit
+    key: CheckGrammarWithSpelling
+    value: -bool YES
+    expect: 1
+  - desc: TextEdit / View source at editing HTML 
+    path: com.apple.TextEdit
+    key: IgnoreHTML
+    value: -bool YES
+    expect: 1
+  - desc: TextEdit / Open files as UTF-8
+    path: com.apple.TextEdit
+    key: PlainTextEncoding
+    value: -int 4
+    expect: 4
+  - desc: TextEdit / Save files as UTF-8
+    path: com.apple.TextEdit
+    key: PlainTextEncodingForWrite
+    value: -int 4
+    expect: 4
+  - desc: TextEdit / Use XHTML notation at output HTML
+    path: com.apple.TextEdit
+    key: UseXHTMLDocType
+    value: -bool YES
+    expect: 1
+  - desc: TextEdit / Use HTML transitional notation at output HTML
+    path: com.apple.TextEdit
+    key: UseTransitionalDocType
+    value: -bool NO
+    expect: 0

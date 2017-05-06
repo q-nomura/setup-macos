@@ -1,6 +1,11 @@
 ---
 - include: _defaults.yml
   with_items:
+  - desc: Appearance / Dark menu mode.
+    path: NSGlobalDomain
+    key: AppleInterfaceStyle
+    value: -string "Dark"
+    expect: Dark
   - desc: Appearance / Set sidebar icon size to large.
     path: NSGlobalDomain
     key: NSTableViewDefaultSizeMode

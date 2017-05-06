@@ -13,4 +13,5 @@
 - include: accessibility.yml
 - include: finder.yml
 - include: terminal.yml
+- include: textedit.yml
 - include: otherapps.yml

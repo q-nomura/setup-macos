@@ -1,6 +1,16 @@
 ---
 - include: _defaults.yml
   with_items:
+  - desc: Keyboard / Set key repeat speed.
+    path: NSGlobalDomain
+    key: KeyRepeat
+    value: -int 2
+    expect: 2
+  - desc: Keyboard / Set key repeat delay.
+    path: NSGlobalDomain
+    key: InitialKeyRepeat
+    value: -int 25
+    expect: 25
   - desc: Keyboard / Disable full keyboard access for all controls.
     path: NSGlobalDomain
     key: AppleKeyboardUIMode

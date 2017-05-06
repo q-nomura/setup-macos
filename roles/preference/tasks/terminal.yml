@@ -1,4 +1,17 @@
 ---
+- name: Terminal / Download terminal profile.
+  get_url:
+    url: https://gist.githubusercontent.com/danmaq/0673d0593205966b453322022db2a68e/raw/b0f1f3692c504746f720782e718caaafd9a216fc/danmaq.terminal
+    dest: ~/Downloads/danmaq.terminal
+
+- name: Terminal / Load terminal profile.
+  shell: open ~/Downloads/danmaq.terminal
+
+- name: Terminal / Remove loaded profile.
+  file:
+    path: ~/Downloads/danmaq.terminal
+    state: absent
+
 - include: _defaults.yml
   with_items:
   - desc: Terminal / Set using encode
@@ -11,6 +24,16 @@
     key: SecureKeyboardEntry
     value: -bool YES
     expect: 1
+  - desc: Terminal / Set default window profile settings
+    path: com.apple.terminal
+    key: Default Window Settings
+    value: -string "danmaq"
+    expect: danmaq
+  - desc: Terminal / Set startup window profile settings
+    path: com.apple.terminal
+    key: Startup Window Settings
+    value: -string "danmaq"
+    expect: danmaq
 
 - name: Terminal / Create .bash_profile
   file:
@@ -30,3 +53,4 @@
     line: alias la='ls -a'
   - regexp: 'alias\sls='
     line: alias ls='ls -G'
+  
