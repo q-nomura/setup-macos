@@ -1,0 +1,51 @@
+---
+- include: _defaults.yml
+  with_items:
+  - desc: Keyboard / Set key repeat speed.
+    path: NSGlobalDomain
+    key: KeyRepeat
+    value: -int 2
+    expect: 2
+  - desc: Keyboard / Set key repeat delay.
+    path: NSGlobalDomain
+    key: InitialKeyRepeat
+    value: -int 25
+    expect: 25
+  - desc: Keyboard / Disable full keyboard access for all controls.
+    path: NSGlobalDomain
+    key: AppleKeyboardUIMode
+    value: -int 0
+    expect: 0
+
+- include: _defaults.yml
+  with_items:
+  - desc: Keyboard / Enable automatic capitalization at typing.
+    path: NSGlobalDomain
+    key: NSAutomaticCapitalizationEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Keyboard / Enable smart dashesat at typing.
+    path: NSGlobalDomain
+    key: NSAutomaticDashSubstitutionEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Keyboard / Enable automatic period at typing.
+    path: NSGlobalDomain
+    key: NSAutomaticPeriodSubstitutionEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Keyboard / Enable smart quotes at typing.
+    path: NSGlobalDomain
+    key: NSAutomaticQuoteSubstitutionEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Keyboard / Enable auto correct at typing.
+    path: NSGlobalDomain
+    key: NSAutomaticSpellingCorrectionEnabled
+    value: -bool YES
+    expect: 1
+  - desc: Keyboard / Enable press-and-hold for keys in favor of key repeat.
+    path: NSGlobalDomain
+    key: ApplePressAndHoldEnabled
+    value: -bool YES
+    expect: 1

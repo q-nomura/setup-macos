@@ -1,0 +1,10 @@
+---
+- name: 'Collect settings: {{ item.desc }}'
+  shell: 'defaults read {{ item.path }} "{{ item.key }}"'
+  register: got
+  changed_when: false
+  ignore_errors: true
+
+- name: 'Set settings: {{ item.desc }}'
+  shell: 'defaults write {{ item.path }} "{{ item.key }}" {{ item.value }}'
+  when: 'item.expect|string not in got.stdout'

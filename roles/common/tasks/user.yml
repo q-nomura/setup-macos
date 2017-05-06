@@ -1,8 +1,0 @@
----
-- name: Unlocking sudo
-  lineinfile:
-    dest: /etc/sudoers
-    regexp: '{{ ansible_env.USER }} ALL=\(ALL\) NOPASSWD: ALL'
-    line: '{{ ansible_env.USER }} ALL=(ALL) NOPASSWD: ALL'
-    validate: visudo -cf %s
-  become: yes

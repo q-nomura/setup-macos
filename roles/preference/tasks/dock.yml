@@ -1,0 +1,61 @@
+---
+- include: _defaults.yml
+  with_items:
+  - desc: Dock / Set the icon size of Dock items. (pixel)
+    path: com.apple.dock
+    key: tilesize
+    value: -int 56
+    expect: 56
+  - desc: Dock / Change minimize/maximize window effect
+    path: com.apple.dock
+    key: mineffect
+    value: -string "suck"
+    expect: suck
+  - desc: Dock / Minimize windows into right tray.
+    path: com.apple.dock
+    key: minimize-to-application
+    value: -bool NO
+    expect: 0
+  - desc: Dock / Show indicator lights for open applications in the Dock.
+    path: com.apple.dock
+    key: show-process-indicators
+    value: -bool YES
+    expect: 1
+  - desc: Dock / Animate opening applications from the Dock.
+    path: com.apple.dock
+    key: launchanim
+    value: -bool YES
+    expect: 1
+  - desc: Dock / Disable automatically hide and show the Dock.
+    path: com.apple.dock
+    key: autohide
+    value: -bool NO
+    expect: 0
+
+- include: _defaults.yml
+  with_items:
+  - desc: Dock / Enable highlight hover effect for the grid view of a stack.
+    path: com.apple.dock
+    key: mouse-over-hilite-stack
+    value: -bool YES
+    expect: 1
+  - desc: Dock / Enable spring loading for all Dock items.
+    path: com.apple.dock
+    key: enable-spring-load-actions-on-all-items
+    value: -bool YES
+    expect: 1
+  - desc: Dock / Set the auto-hiding Dock delay.
+    path: com.apple.dock
+    key: autohide-delay
+    value: -float 0.3
+    expect: 0.3
+  - desc: Dock / Set the animation when hiding/showing the Dock.
+    path: com.apple.dock
+    key: autohide-time-modifier
+    value: -float 0.2
+    expect: 0.2
+  - desc: Dock / Make Dock icons of hidden applications translucent.
+    path: com.apple.dock
+    key: showhidden
+    value: -bool YES
+    expect: 1

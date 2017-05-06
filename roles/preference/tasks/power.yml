@@ -1,0 +1,11 @@
+---
+- name: Collect power management setting
+  shell: pmset -g
+  register: power_management
+  changed_when: false
+  ignore_errors: true
+
+- name: Set standby(hibernation) delay to 24 hours
+  shell: pmset -a standbydelay 86400
+  become: true
+  when: '"standbydelay         86400" not in power_management.stdout'

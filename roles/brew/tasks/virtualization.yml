@@ -19,7 +19,11 @@
     name: parallels-desktop
     state: present
 
-- name: Install Docker Toolbox tools from Homebrew cask.
-  homebrew_cask:
-    name: docker-toolbox
-    state: present
+- name: Install others virtualization tools from Homebrew.
+  homebrew:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+  - docker-machine
+  - docker-machine-parallels
+  - docker

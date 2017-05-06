@@ -1,10 +1,27 @@
 ---
+- name: Unlocking sudo
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '{{ ansible_env.USER }} ALL=\(ALL\) NOPASSWD: ALL'
+    line: '{{ ansible_env.USER }} ALL=(ALL) NOPASSWD: ALL'
+    validate: visudo -cf %s
+  become: yes
+
 - include: runtimes.yml
 - include: utils.yml
 - include: browsers.yml
 - include: virtualization.yml
 - include: webstorages.yml
 - include: multimedia.yml
+- include: office.yml
 - include: community.yml
 - include: games.yml
 - include: dev.yml
+
+- name: Locking sudo
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '{{ ansible_env.USER }} ALL=\(ALL\) NOPASSWD: ALL'
+    line: ''
+    validate: visudo -cf %s
+  become: yes

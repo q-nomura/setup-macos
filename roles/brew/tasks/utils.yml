@@ -9,3 +9,8 @@
   - sl
   - wget
   - xz
+
+- name: Install Drobo dashboard from Homebrew cask.
+  homebrew_cask:
+    name: drobo-dashboard
+    state: present

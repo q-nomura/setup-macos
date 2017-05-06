@@ -1,0 +1,33 @@
+---
+- name: International / Collect current locale.
+  shell: defaults read NSGlobalDomain AppleLanguages
+  register: locale
+  changed_when: false
+
+- name: International / Set languagesetup.
+  shell: languagesetup -langspec "Japanese"
+  become: true
+  when: '"ja-JP" not in locale.stdout'
+
+- include: _defaults.yml
+  with_items:
+  - desc: International / Set language.
+    path: NSGlobalDomain
+    key: AppleLanguages
+    value: -array "ja-JP"
+    expect: ja-JP
+  - desc: International / Set locale.
+    path: NSGlobalDomain
+    key: AppleLocale
+    value: -string "ja_JP"
+    expect: ja_JP
+  - desc: International / Set measurement units.
+    path: NSGlobalDomain
+    key: AppleMeasurementUnits
+    value: -string "Centimeters"
+    expect: Centimeters
+  - desc: International / Enable metric units.
+    path: NSGlobalDomain
+    key: AppleMetricUnits
+    value: -bool YES
+    expect: 1

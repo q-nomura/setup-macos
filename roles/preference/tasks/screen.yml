@@ -1,0 +1,28 @@
+---
+- include: _defaults.yml
+  with_items:
+  - desc: Screen / Require password after sleep or screen saver begins.
+    path: com.apple.screensaver
+    key: askForPassword
+    value: -int 1
+    expect: 1
+  - desc: Screen / Require password after sleep or screen saver begins.
+    path: com.apple.screensaver
+    key: askForPasswordDelay
+    value: -int 300
+    expect: 300
+  - desc: Screen / Save screenshots format.
+    path: com.apple.screencapture
+    key: type
+    value: -string "png"
+    expect: png
+  - desc: Screen / Enable shadow in screenshots.
+    path: com.apple.screencapture
+    key: disable-shadow
+    value: -bool NO
+    expect: 0
+  - desc: Screen / Enable subpixel font rendering on non-Apple LCDs
+    path: NSGlobalDomain
+    key: AppleFontSmoothing
+    value: -int 3
+    expect: 3

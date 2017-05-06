@@ -3,5 +3,4 @@
 - include: update.yml
 - include: locale.yml
 - include: network.yml
-- include: user.yml
 - include: brew.yml
