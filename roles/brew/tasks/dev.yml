@@ -9,14 +9,6 @@
   - vim
   - hub
 
-# - name: Validate installed Meteor.
-#   shell: which meteor
-#   register: meteor
-
-# - name: Install Meteor
-#   shell: curl https://install.meteor.com/ | sh
-#   when: 'not meteor.stdout'
-
 - name: Install .NET Framework SDK from Homebrew cask.
   homebrew_cask:
     name: dotnet-sdk
@@ -53,3 +45,29 @@
   homebrew_cask:
     name: unity-standard-assets
     state: present
+
+- name: Validate installed Meteor.
+  shell: which meteor
+  register: meteor
+  ignore_errors: true
+
+- name: Download Meteor
+  get_url:
+    url: https://install.meteor.com/
+    dest: ~/Downloads/install.meteor.sh
+    mode: 0755
+  when: 'not meteor.stdout'
+
+- name: Install Meteor
+  shell: ~/Downloads/install.meteor.sh
+  when: 'not meteor.stdout'
+
+- name: Set .gitconfig
+  template:
+    src: .gitconfig.j2
+    dest: ~/.gitconfig
+
+- name: Set .vimrc
+  template:
+    src: .vimrc.j2
+    dest: ~/.vimrc
