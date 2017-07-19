@@ -24,6 +24,16 @@
     name: visual-studio
     state: present
 
+- name: Install Android SDK from Homebrew cask.
+  homebrew_cask:
+    name: android-sdk
+    state: present
+
+- name: Install Android NDK from Homebrew cask.
+  homebrew_cask:
+    name: android-ndk
+    state: present
+
 - name: Install Unity from Homebrew cask.
   homebrew_cask:
     name: unity
