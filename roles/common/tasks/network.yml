@@ -25,6 +25,7 @@
   shell: defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName
   register: netbiosname
   changed_when: false
+  ignore_errors: true
 
 - name: Set NetBIOS name
   shell: 'defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "{{ computername }}"'
