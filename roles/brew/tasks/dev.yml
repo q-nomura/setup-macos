@@ -23,6 +23,11 @@
     name: npmbrew
     global: yes
   
+- name: Install Expo XDE for React Native app develop.
+  homebrew_cask:
+    name: expo-xde
+    state: present
+
 - name: Install .NET Framework SDK from Homebrew cask.
   homebrew_cask:
     name: dotnet-sdk
@@ -48,6 +53,11 @@
     name: android-ndk
     state: present
 
+- name: Install Android Studio from Homebrew cask.
+  homebrew_cask:
+    name: android-studio
+    state: present
+
 - name: Install Unity from Homebrew cask.
   homebrew_cask:
     name: unity
@@ -63,7 +73,6 @@
   - unity-linux-support-for-editor
   - unity-webgl-support-for-editor
   - unity-windows-support-for-editor
-  - unity-standard-assets
 
 - name: Install Unity Stanard Assets from Homebrew cask.
   homebrew_cask:
