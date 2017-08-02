@@ -5,7 +5,6 @@
     state: latest
   with_items:
   - imagemagick
-  - node
   - nodebrew
   - vim
   - hub
@@ -22,7 +21,18 @@
   npm:
     name: npmbrew
     global: yes
-  
+
+- name: Assign path to nodebrew and npmbrew.
+  lineinfile:
+    dest: ~/.bash_profile
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+  - regexp: '\.npmbrew/current/bin'
+    line: export PATH=$HOME/.npmbrew/current/bin:$PATH'
+  - regexp: '\.nodebrew/current/bin'
+    line: export PATH=$HOME/.nodebrew/current/bin:$PATH'
+    
 - name: Install Expo XDE for React Native app develop.
   homebrew_cask:
     name: expo-xde
