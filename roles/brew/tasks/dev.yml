@@ -8,6 +8,7 @@
   - nodebrew
   - vim
   - hub
+  - watchman
 
 - name: Create nodebrew work folders
   file:

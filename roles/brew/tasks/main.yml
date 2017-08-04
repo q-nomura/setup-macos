@@ -13,7 +13,6 @@
 - include: virtualization.yml
 - include: webstorages.yml
 - include: multimedia.yml
-- include: office.yml
 - include: community.yml
 - include: games.yml
 - include: dev.yml
