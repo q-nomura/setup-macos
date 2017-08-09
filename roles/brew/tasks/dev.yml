@@ -9,6 +9,7 @@
   - vim
   - hub
   - watchman
+  - git-lfs
 
 - name: Create nodebrew work folders
   file:
