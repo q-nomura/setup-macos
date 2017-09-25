@@ -10,6 +10,8 @@
   - wget
   - xz
 
+# brew tap buo/cask-upgrade
+
 - name: Install Drobo dashboard from Homebrew cask.
   homebrew_cask:
     name: drobo-dashboard
