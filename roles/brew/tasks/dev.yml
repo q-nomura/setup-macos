@@ -39,6 +39,14 @@
   - regexp: '\.nodebrew/current/bin'
     line: export PATH=$HOME/.nodebrew/current/bin:$PATH'
     
+- name: Install Wercker app develop.
+  homebrew_cask:
+    name: '{{ item }}'
+    state: present
+  with_items:
+  - wercker
+  - wercker-cli
+    
 - name: Install Expo XDE for React Native app develop.
   homebrew_cask:
     name: expo-xde
