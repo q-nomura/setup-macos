@@ -4,12 +4,16 @@
     name: '{{ item }}'
     state: latest
   with_items:
-  - imagemagick
-  - nodebrew
-  - vim
-  - hub
-  - watchman
+  - cmake
   - git-lfs
+  - nodebrew
+  - hub
+  - hwloc
+  - imagemagick
+  - libmicrohttpd
+  - openssl
+  - watchman
+  - vim
 
 - name: Create nodebrew work folders
   file:
