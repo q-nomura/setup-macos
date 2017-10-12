@@ -1,9 +1,4 @@
 ---
-- name: Install Palallels Desktop from Homebrew cask.
-  homebrew_cask:
-    name: parallels-desktop
-    state: present
-
 - name: Install Virtualbox from Homebrew cask.
   homebrew_cask:
     name: virtualbox
@@ -14,16 +9,13 @@
     name: vagrant
     state: present
 
-- name: Install Palallels Desktop from Homebrew cask.
-  homebrew_cask:
-    name: parallels-desktop
-    state: present
-
-- name: Install others virtualization tools from Homebrew.
+- name: Install Docker from Homebrew.
   homebrew:
     name: '{{ item }}'
     state: latest
   with_items:
   - docker-machine
-  - docker-machine-parallels
   - docker
+
+# docker-machine create docker
+# eval (docker-machine env docker)
