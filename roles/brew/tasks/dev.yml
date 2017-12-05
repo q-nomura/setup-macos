@@ -14,6 +14,7 @@
   - openssl
   - watchman
   - vim
+  - yarn
 
 - name: Create nodebrew work folders
   file:
