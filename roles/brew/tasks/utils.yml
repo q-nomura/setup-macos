@@ -9,6 +9,7 @@
   - sl
   - wget
   - xz
+  - p7zip
 
 # brew tap buo/cask-upgrade
 

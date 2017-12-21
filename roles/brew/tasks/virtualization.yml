@@ -17,5 +17,5 @@
   - docker-machine
   - docker
 
-# docker-machine create docker
-# eval (docker-machine env docker)
+# docker-machine create
+# eval (docker-machine env)

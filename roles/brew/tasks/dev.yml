@@ -48,11 +48,6 @@
   - wercker
   - wercker-cli
     
-- name: Install Expo XDE for React Native app develop.
-  homebrew_cask:
-    name: expo-xde
-    state: present
-
 - name: Install .NET Framework SDK from Homebrew cask.
   homebrew_cask:
     name: dotnet-sdk
@@ -119,6 +114,11 @@
 - name: Install Meteor
   shell: ~/Downloads/install.meteor.sh
   when: 'not meteor.stdout'
+
+- name: Remove Meteor installer
+  file:
+    path: ~/Downloads/install.meteor.sh
+    state: absent
 
 - name: Set .gitconfig
   template:
