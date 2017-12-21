@@ -4,6 +4,11 @@
     name: virtualbox
     state: present
 
+- name: Install Virtualbox Extension pack from Homebrew cask.
+  homebrew_cask:
+    name: virtualbox-extension-pack
+    state: present
+
 - name: Install Vagrant from Homebrew cask.
   homebrew_cask:
     name: vagrant
