@@ -20,14 +20,3 @@
   become: yes
   when: hostname.stdout != computername
   notify: Reboot macOS
-
-- name: Collect NetBIOS name
-  shell: defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName
-  register: netbiosname
-  changed_when: false
-  ignore_errors: true
-
-- name: Set NetBIOS name
-  shell: 'defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "{{ computername }}"'
-  when: netbiosname.stdout != computername
-  notify: Reboot macOS
