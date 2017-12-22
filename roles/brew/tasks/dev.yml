@@ -5,15 +5,15 @@
     state: latest
   with_items:
   - cmake
+  - flow
   - git-lfs
-  - nodebrew
   - hub
   - hwloc
   - imagemagick
   - libmicrohttpd
   - openssl
-  - watchman
   - vim
+  - watchman
   - yarn
 
 - name: Create nodebrew work folders
@@ -107,17 +107,17 @@
 - name: Download Meteor
   get_url:
     url: https://install.meteor.com/
-    dest: ~/Downloads/install.meteor.sh
+    dest: /tmp/install.meteor.sh
     mode: 0755
   when: 'not meteor.stdout'
 
 - name: Install Meteor
-  shell: ~/Downloads/install.meteor.sh
+  shell: /tmp/install.meteor.sh
   when: 'not meteor.stdout'
 
 - name: Remove Meteor installer
   file:
-    path: ~/Downloads/install.meteor.sh
+    path: /tmp/install.meteor.sh
     state: absent
 
 - name: Set .gitconfig

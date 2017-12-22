@@ -2,14 +2,14 @@
 - name: Terminal / Download terminal profile.
   get_url:
     url: https://gist.githubusercontent.com/danmaq/0673d0593205966b453322022db2a68e/raw/b0f1f3692c504746f720782e718caaafd9a216fc/danmaq.terminal
-    dest: ~/Downloads/danmaq.terminal
+    dest: /tmp/danmaq.terminal
 
 - name: Terminal / Load terminal profile.
-  shell: open ~/Downloads/danmaq.terminal
+  shell: open /tmp/danmaq.terminal
 
 - name: Terminal / Remove loaded profile.
   file:
-    path: ~/Downloads/danmaq.terminal
+    path: /tmp/danmaq.terminal
     state: absent
 
 - include: _defaults.yml
