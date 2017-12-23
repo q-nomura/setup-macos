@@ -7,6 +7,11 @@
     validate: visudo -cf %s
   become: yes
 
+- name: Judges whether this Mac is remote control by Vagrant.
+  stat:
+    path: /vagrant
+  register: vagrant
+
 - import_tasks: runtimes.yml
 - import_tasks: utils.yml
 - import_tasks: browsers.yml
@@ -15,6 +20,7 @@
 - import_tasks: community.yml
 - import_tasks: games.yml
 - import_tasks: virtualization.yml
+  when: not vagrant.stat.exists
 - import_tasks: dev.yml
 
 - name: Locking sudo
