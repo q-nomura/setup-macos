@@ -1,5 +1,5 @@
 ---
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: TextEdit / Use plain text mode for new documents 
     path: com.apple.TextEdit

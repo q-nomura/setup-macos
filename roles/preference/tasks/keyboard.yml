@@ -1,5 +1,5 @@
 ---
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: Keyboard / Set key repeat speed.
     path: NSGlobalDomain
@@ -17,7 +17,7 @@
     value: -int 0
     expect: 0
 
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: Keyboard / Enable automatic capitalization at typing.
     path: NSGlobalDomain

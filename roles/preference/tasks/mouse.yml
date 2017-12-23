@@ -1,5 +1,5 @@
 ---
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: Mouse / Disable Natural-scrolling. (Lion-style)
     path: NSGlobalDomain

@@ -1,5 +1,5 @@
 ---
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: Sound / Set notify sound
     path: NSGlobalDomain
@@ -17,7 +17,7 @@
     value: -float 1
     expect: 1
 
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: Sound / Increase sound quality for Bluetooth headphones/headsets (1/3)
     path: com.apple.BluetoothAudioAgent

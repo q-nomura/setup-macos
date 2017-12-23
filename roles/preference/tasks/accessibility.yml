@@ -1,5 +1,5 @@
 ---
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: Accessibility / Disable reduce transparency in the menu bar and elsewhere.
     path: com.apple.universalaccess

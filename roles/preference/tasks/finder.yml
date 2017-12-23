@@ -1,5 +1,5 @@
 ---
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: Finder / Show icons for hard drives.
     path: com.apple.finder
@@ -57,7 +57,7 @@
     value: -bool YES
     expect: 1
 
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: Finder / Allow quitting via ⌘ + Q; doing so will also hide desktop icons.
     path: com.apple.finder

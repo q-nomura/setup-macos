@@ -1,5 +1,5 @@
 ---
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: App Store / Enable the automatic update check.
     path: com.apple.SoftwareUpdate
@@ -32,7 +32,7 @@
     value: -bool YES
     expect: 1
 
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: App Store / Disable the WebKit Developer Tools in the Mac App Store.
     path: com.apple.appstore

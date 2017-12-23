@@ -1,5 +1,5 @@
 ---
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: Printer / Set sidebar icon size to large.
     path: com.apple.print.PrintingPrefs

@@ -1,5 +1,5 @@
 ---
-- include: _defaults.yml
+- include_tasks: _defaults.yml
   with_items:
   - desc: Screen / Require password after sleep or screen saver begins.
     path: com.apple.screensaver
