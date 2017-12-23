@@ -1,31 +1,40 @@
 ---
-- include_tasks: _defaults.yml
-  with_items:
-  - desc: Mission Control / Speed up Mission Control animations.
-    path: com.apple.dock
+- name: Mission Control / Speed up Mission Control animations
+  osx_defaults:
+    domain: com.apple.dock
     key: expose-animation-duration
-    value: -float 0.2
-    expect: 0.2
-  - desc: Mission Control / Disable Dashboard.
-    path: com.apple.dock
-    key: mcx-disabled
-    value: -bool YES
-    expect: 1
-  - desc: Mission Control / Don’t show Dashboard as a Space.
-    path: com.apple.dock
-    key: dashboard-in-overlay
-    value: -bool YES
-    expect: 1
-  - desc: Mission Control / Enable automatically rearrange Spaces based on most recent use.
-    path: com.apple.dock
-    key: mru-spaces
-    value: -bool YES
-    expect: 1
+    type: float
+    value: 0.2
+  notify: Reload Dock
 
-- include_tasks: _defaults.yml
-  with_items:
-  - desc: Mission Control / Don’t group windows by application in Mission Control.
-    path: com.apple.dock
+- name: Mission Control / Disable Dashboard
+  osx_defaults:
+    domain: com.apple.dock
+    key: mcx-disabled
+    type: bool
+    value: true
+  notify: Reload Dock
+
+- name: Mission Control / Don’t show Dashboard as a Space
+  osx_defaults:
+    domain: com.apple.dock
+    key: dashboard-in-overlay
+    type: bool
+    value: true
+  notify: Reload Dock
+
+- name: Mission Control / Enable automatically rearrange Spaces based on most recent use
+  osx_defaults:
+    domain: com.apple.dock
+    key: mru-spaces
+    type: bool
+    value: true
+  notify: Reload Dock
+
+- name: Mission Control / Don’t group windows by application in Mission Control
+  osx_defaults:
+    domain: com.apple.dock
     key: expose-group-by-app
-    value: -bool NO
-    expect: 0
+    type: bool
+    value: false
+  notify: Reload Dock

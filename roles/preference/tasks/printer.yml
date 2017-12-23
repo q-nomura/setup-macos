@@ -1,8 +1,7 @@
 ---
-- include_tasks: _defaults.yml
-  with_items:
-  - desc: Printer / Set sidebar icon size to large.
-    path: com.apple.print.PrintingPrefs
+- name: Printer / Quit When Finished
+  osx_defaults:
+    domain: com.apple.print.PrintingPrefs
     key: Quit When Finished
-    value: -bool YES
-    expect: 1
+    type: bool
+    value: true

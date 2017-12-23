@@ -1,51 +1,63 @@
 ---
-- include_tasks: _defaults.yml
-  with_items:
-  - desc: Keyboard / Set key repeat speed.
-    path: NSGlobalDomain
+- name: Keyboard / Set key repeat speed
+  osx_defaults:
+    domain: NSGlobalDomain
     key: KeyRepeat
-    value: -int 2
-    expect: 2
-  - desc: Keyboard / Set key repeat delay.
-    path: NSGlobalDomain
-    key: InitialKeyRepeat
-    value: -int 25
-    expect: 25
-  - desc: Keyboard / Disable full keyboard access for all controls.
-    path: NSGlobalDomain
-    key: AppleKeyboardUIMode
-    value: -int 0
-    expect: 0
+    type: int
+    value: 2
 
-- include_tasks: _defaults.yml
-  with_items:
-  - desc: Keyboard / Enable automatic capitalization at typing.
-    path: NSGlobalDomain
+- name: Keyboard / Set key repeat delay
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: InitialKeyRepeat
+    type: int
+    value: 25
+
+- name: Keyboard / Disable full keyboard access for all controls
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleKeyboardUIMode
+    type: int
+    value: 0
+
+- name: Keyboard / Enable automatic capitalization at typing
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSAutomaticCapitalizationEnabled
-    value: -bool YES
-    expect: 1
-  - desc: Keyboard / Enable smart dashesat at typing.
-    path: NSGlobalDomain
+    type: bool
+    value: true
+
+- name: Keyboard / Enable smart dashesat at typing
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSAutomaticDashSubstitutionEnabled
-    value: -bool YES
-    expect: 1
-  - desc: Keyboard / Enable automatic period at typing.
-    path: NSGlobalDomain
+    type: bool
+    value: true
+
+- name: Keyboard / Enable automatic period at typing
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSAutomaticPeriodSubstitutionEnabled
-    value: -bool YES
-    expect: 1
-  - desc: Keyboard / Enable smart quotes at typing.
-    path: NSGlobalDomain
+    type: bool
+    value: true
+
+- name: Keyboard / Enable smart quotes at typing
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSAutomaticQuoteSubstitutionEnabled
-    value: -bool YES
-    expect: 1
-  - desc: Keyboard / Enable auto correct at typing.
-    path: NSGlobalDomain
+    type: bool
+    value: true
+
+- name: Keyboard / Enable auto correct at typing
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSAutomaticSpellingCorrectionEnabled
-    value: -bool YES
-    expect: 1
-  - desc: Keyboard / Enable press-and-hold for keys in favor of key repeat.
-    path: NSGlobalDomain
+    type: bool
+    value: true
+
+- name: Keyboard / Enable press-and-hold for keys in favor of key repeat
+  osx_defaults:
+    domain: NSGlobalDomain
     key: ApplePressAndHoldEnabled
-    value: -bool YES
-    expect: 1
+    type: bool
+    value: true

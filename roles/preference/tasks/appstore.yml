@@ -1,46 +1,49 @@
 ---
-- include_tasks: _defaults.yml
-  with_items:
-  - desc: App Store / Enable the automatic update check.
-    path: com.apple.SoftwareUpdate
-    key: AutomaticCheckEnabled
-    value: -bool YES
-    expect: 1
-  - desc: App Store / Check for software updates daily, not just once per week.
-    path: com.apple.SoftwareUpdate
+- name: App Store / Check for software updates daily, not just once per week
+  osx_defaults:
+    domain: com.apple.SoftwareUpdate
     key: ScheduleFrequency
-    value: -int 1
-    expect: 1
-  - desc: App Store / Download newly available updates in background.
-    path: com.apple.SoftwareUpdate
-    key: AutomaticDownload
-    value: -int 1
-    expect: 1
-  - desc: App Store / Automatically download apps purchased on other Macs.
-    path: com.apple.SoftwareUpdate
-    key: ConfigDataInstall
-    value: -int 1
-    expect: 1
-  - desc: App Store / Turn on app auto-update.
-    path: com.apple.commerce
-    key: AutoUpdate
-    value: -bool YES
-    expect: 1
-  - desc: App Store / Allow the App Store to reboot machine on macOS updates.
-    path: com.apple.commerce
-    key: AutoUpdateRestartRequired
-    value: -bool YES
-    expect: 1
+    type: int
+    value: 1
 
-- include_tasks: _defaults.yml
-  with_items:
-  - desc: App Store / Disable the WebKit Developer Tools in the Mac App Store.
-    path: com.apple.appstore
-    key: WebKitDeveloperExtras
-    value: -bool NO
-    expect: 0
-  - desc: App Store / Disable Debug Menu in the Mac App Store.
-    path: com.apple.appstore
-    key: ShowDebugMenu
-    value: -bool NO
-    expect: 0
+- name: App Store / Enable the automatic update check
+  osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: AutomaticCheckEnabled
+    type: bool
+    value: true
+
+- name: App Store / Enable the automatic security update check
+  osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: CriticalUpdateInstall
+    type: bool
+    value: true
+
+- name: App Store / Download newly available updates in background
+  osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: AutomaticDownload
+    type: bool
+    value: true
+
+- name: App Store / Automatically download apps purchased on other Macs
+  osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: ConfigDataInstall
+    type: bool
+    value: true
+
+- name: App Store / Turn on app auto-update
+  osx_defaults:
+    domain: com.apple.commerce
+    key: AutoUpdate
+    type: bool
+    value: true
+
+- name: App Store / Allow the App Store to reboot machine on macOS updates
+  osx_defaults:
+    domain: com.apple.commerce
+    key: AutoUpdateRestartRequired
+    type: bool
+    value: true

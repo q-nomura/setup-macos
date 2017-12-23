@@ -7,27 +7,31 @@
 - name: International / Set languagesetup.
   shell: languagesetup -langspec "Japanese"
   become: true
-  when: '"ja-JP" not in locale.stdout'
+  when: '"ja" not in locale.stdout'
 
-- include_tasks: _defaults.yml
-  with_items:
-  - desc: International / Set language.
-    path: NSGlobalDomain
+- name: International / Set language
+  osx_defaults:
+    domain: NSGlobalDomain
     key: AppleLanguages
-    value: -array "ja-JP"
-    expect: ja-JP
-  - desc: International / Set locale.
-    path: NSGlobalDomain
+    type: array
+    value:
+    - ja-JP
+
+- name: International / Set locale
+  osx_defaults:
+    domain: NSGlobalDomain
     key: AppleLocale
-    value: -string "ja_JP"
-    expect: ja_JP
-  - desc: International / Set measurement units.
-    path: NSGlobalDomain
+    value: ja_JP
+
+- name: International / Set measurement units
+  osx_defaults:
+    domain: NSGlobalDomain
     key: AppleMeasurementUnits
-    value: -string "Centimeters"
-    expect: Centimeters
-  - desc: International / Enable metric units.
-    path: NSGlobalDomain
+    value: Centimeters
+
+- name: International / Enable metric units
+  osx_defaults:
+    domain: NSGlobalDomain
     key: AppleMetricUnits
-    value: -bool YES
-    expect: 1
+    type: bool
+    value: true

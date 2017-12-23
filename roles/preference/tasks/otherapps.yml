@@ -1,33 +1,35 @@
 ---
-- include_tasks: _defaults.yml
-  with_items:
-  - desc: Mail / Copy email addresses and name
-    path: com.apple.mail
+- name: Mail / Copy email addresses and name
+  osx_defaults:
+    domain: com.apple.mail
     key: AddressesIncludeNameOnPasteboard
-    value: -bool YES
-    expect: 1
-  - desc: Mail / Disable inline attachments (just show the icons)
-    path: com.apple.mail
+    type: bool
+    value: true
+
+- name: Mail / Disable inline attachments (just show the icons)
+  osx_defaults:
+    domain: com.apple.mail
     key: DisableInlineAttachmentViewing
-    value: -bool YES
-    expect: 1
-  - desc: Activity Monitor / Show the main window when launched
-    path: com.apple.ActivityMonitor
+    type: bool
+    value: true
+
+- name: Activity Monitor / Show the main window when launched
+  osx_defaults:
+    domain: com.apple.ActivityMonitor
     key: OpenMainWindow
-    value: -bool YES
-    expect: 1
-  - desc: Activity Monitor / Visualize CPU usage in the Dock icon
-    path: com.apple.ActivityMonitor
+    type: bool
+    value: true
+
+- name: Activity Monitor / Visualize CPU usage in the Dock icon
+  osx_defaults:
+    domain: com.apple.ActivityMonitor
     key: IconType
-    value: -int 6
-    expect: 6
-  - desc: Activity Monitor / Show all processes
-    path: com.apple.ActivityMonitor
+    type: int
+    value: 6
+
+- name: Activity Monitor / Show all processes
+  osx_defaults:
+    domain: com.apple.ActivityMonitor
     key: ShowCategory
-    value: -int 100
-    expect: 100
-  - desc: Twitter / Enable the Develop menu
-    path: com.twitter.twitter-mac
-    key: ShowDevelopMenu
-    value: -bool YES
-    expect: 1
+    type: int
+    value: 100

@@ -1,43 +1,49 @@
 ---
-- include_tasks: _defaults.yml
-  with_items:
-  - desc: TextEdit / Use plain text mode for new documents 
-    path: com.apple.TextEdit
+- name: 'Set settings: TextEdit / Use plain text mode for new documents '
+  osx_defaults:
+    domain: com.apple.TextEdit
     key: RichText
-    value: -bool NO
-    expect: 0
-  - desc: TextEdit / Show page breaks 
-    path: com.apple.TextEdit
+    type: bool
+    value: false
+
+- name: 'Set settings: TextEdit / Show page breaks'
+  osx_defaults:
+    domain: com.apple.TextEdit
     key: ShowPageBreaks
-    value: -bool YES
-    expect: 1
-  - desc: TextEdit / Use check grammar with spelling
-    path: com.apple.TextEdit
+    type: bool
+    value: true
+
+- name: 'Set settings: TextEdit / Use check grammar with spelling'
+  osx_defaults:
+    domain: com.apple.TextEdit
     key: CheckGrammarWithSpelling
-    value: -bool YES
-    expect: 1
-  - desc: TextEdit / View source at editing HTML 
-    path: com.apple.TextEdit
+    type: bool
+    value: true
+
+- name: 'Set settings: TextEdit / View source at editing HTML'
+  osx_defaults:
+    domain: com.apple.TextEdit
     key: IgnoreHTML
-    value: -bool YES
-    expect: 1
-  - desc: TextEdit / Open files as UTF-8
-    path: com.apple.TextEdit
-    key: PlainTextEncoding
-    value: -int 4
-    expect: 4
-  - desc: TextEdit / Save files as UTF-8
-    path: com.apple.TextEdit
+    type: bool
+    value: true
+
+- name: 'Set settings: TextEdit / Save files as UTF-8'
+  osx_defaults:
+    domain: com.apple.TextEdit
     key: PlainTextEncodingForWrite
-    value: -int 4
-    expect: 4
-  - desc: TextEdit / Use XHTML notation at output HTML
-    path: com.apple.TextEdit
+    type: int
+    value: 4
+
+- name: 'Set settings: TextEdit / Use XHTML notation at output HTML'
+  osx_defaults:
+    domain: com.apple.TextEdit
     key: UseXHTMLDocType
-    value: -bool YES
-    expect: 1
-  - desc: TextEdit / Use HTML transitional notation at output HTML
-    path: com.apple.TextEdit
+    type: bool
+    value: true
+
+- name: 'Set settings: TextEdit / Use HTML transitional notation at output HTML'
+  osx_defaults:
+    domain: com.apple.TextEdit
     key: UseTransitionalDocType
-    value: -bool NO
-    expect: 0
+    type: bool
+    value: false
