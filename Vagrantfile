@@ -4,6 +4,7 @@
 Vagrant.configure('2') do |config|
   config.vm.box = 'jhcook/macos-sierra'
   config.vm.synced_folder '.', '/vagrant', type: 'rsync', owner: 'vagrant', group: 'staff'
+  config.vm.boot_timeout = 1200
   config.vm.provider 'virtualbox' do |vb|
     vb.gui = true
     vb.cpus = 2
