@@ -11,7 +11,7 @@
 
 - name: Install Google Drive from Homebrew cask.
   homebrew_cask:
-    name: google-drive
+    name: google-drive-file-stream
     state: present
 
 - name: Install Adobe Creative Cloud from Homebrew cask.
