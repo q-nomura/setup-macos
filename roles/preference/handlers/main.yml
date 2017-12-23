@@ -1,6 +1,9 @@
 ---
 - name: Reload Dock
   shell: killall Dock
-  
+
+- name: Reload Finder
+  shell: killall Finder
+
 - name: Reload SystemUIServer
   shell: killall SystemUIServer
