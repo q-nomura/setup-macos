@@ -9,7 +9,7 @@ Vagrant.configure('2') do |config|
     vb.cpus = 2
     vb.linked_clone = true
     vb.name = 'OS X Setup test'
-    vb.memory = '3072'
+    vb.memory = '3584'
     vb.customize [
       'modifyvm', :id,
       '--vram', '128',
