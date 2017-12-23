@@ -11,6 +11,11 @@
   - xz
   - p7zip
 
+- name: Install mas.
+  homebrew:
+    name: mas
+    state: latest
+
 - name: Install brew cu updater.
   homebrew_tap:
     name: buo/cask-upgrade
