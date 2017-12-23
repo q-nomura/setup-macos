@@ -10,3 +10,6 @@
   register: softwareupdate
   changed_when: '"No updates are available." not in softwareupdate.stderr'
   notify: Reboot macOS
+
+- name: force all notified handlers to run at this point
+  meta: flush_handlers
