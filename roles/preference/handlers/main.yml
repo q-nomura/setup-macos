@@ -1,9 +1,12 @@
 ---
 - name: Reload Dock
   shell: killall Dock
+  ignore_errors: true
 
 - name: Reload Finder
   shell: killall Finder
+  ignore_errors: true
 
 - name: Reload SystemUIServer
   shell: killall SystemUIServer
+  ignore_errors: true
