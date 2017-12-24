@@ -1,61 +1,87 @@
 ---
-- include: _defaults.yml
-  with_items:
-  - desc: Dock / Set the icon size of Dock items. (pixel)
-    path: com.apple.dock
+- name: Dock / Set the icon size of Dock items. (pixel)
+  osx_defaults:
+    domain: com.apple.dock
     key: tilesize
-    value: -int 56
-    expect: 56
-  - desc: Dock / Change minimize/maximize window effect
-    path: com.apple.dock
-    key: mineffect
-    value: -string "suck"
-    expect: suck
-  - desc: Dock / Minimize windows into right tray.
-    path: com.apple.dock
-    key: minimize-to-application
-    value: -bool NO
-    expect: 0
-  - desc: Dock / Show indicator lights for open applications in the Dock.
-    path: com.apple.dock
-    key: show-process-indicators
-    value: -bool YES
-    expect: 1
-  - desc: Dock / Animate opening applications from the Dock.
-    path: com.apple.dock
-    key: launchanim
-    value: -bool YES
-    expect: 1
-  - desc: Dock / Disable automatically hide and show the Dock.
-    path: com.apple.dock
-    key: autohide
-    value: -bool NO
-    expect: 0
+    type: int
+    value: 56
+  notify: Reload Dock
 
-- include: _defaults.yml
-  with_items:
-  - desc: Dock / Enable highlight hover effect for the grid view of a stack.
-    path: com.apple.dock
+- name: Dock / Change minimize/maximize window effect
+  osx_defaults:
+    domain: com.apple.dock
+    key: mineffect
+    value: suck
+  notify: Reload Dock
+
+- name: Dock / Minimize windows into right tray
+  osx_defaults:
+    domain: com.apple.dock
+    key: minimize-to-application
+    type: bool
+    value: false
+  notify: Reload Dock
+
+- name: Dock / Show indicator lights for open applications in the Dock
+  osx_defaults:
+    domain: com.apple.dock
+    key: show-process-indicators
+    type: bool
+    value: true
+  notify: Reload Dock
+
+- name: Dock / Animate opening applications from the Dock
+  osx_defaults:
+    domain: com.apple.dock
+    key: launchanim
+    type: bool
+    value: true
+  notify: Reload Dock
+
+- name: Dock / Disable automatically hide and show the Dock
+  osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: false
+  notify: Reload Dock
+
+- name: Dock / Enable highlight hover effect for the grid view of a stack
+  osx_defaults:
+    domain: com.apple.dock
     key: mouse-over-hilite-stack
-    value: -bool YES
-    expect: 1
-  - desc: Dock / Enable spring loading for all Dock items.
-    path: com.apple.dock
+    type: bool
+    value: true
+  notify: Reload Dock
+
+- name: Dock / Enable spring loading for all Dock items
+  osx_defaults:
+    domain: com.apple.dock
     key: enable-spring-load-actions-on-all-items
-    value: -bool YES
-    expect: 1
-  - desc: Dock / Set the auto-hiding Dock delay.
-    path: com.apple.dock
+    type: bool
+    value: true
+  notify: Reload Dock
+
+- name: Dock / Set the auto-hiding Dock delay
+  osx_defaults:
+    domain: com.apple.dock
     key: autohide-delay
-    value: -float 0.3
-    expect: 0.3
-  - desc: Dock / Set the animation when hiding/showing the Dock.
-    path: com.apple.dock
+    type: float
+    value: 0.3
+  notify: Reload Dock
+
+- name: Dock / Set the animation when hiding/showing the Dock
+  osx_defaults:
+    domain: com.apple.dock
     key: autohide-time-modifier
-    value: -float 0.2
-    expect: 0.2
-  - desc: Dock / Make Dock icons of hidden applications translucent.
-    path: com.apple.dock
+    type: float
+    value: 0.2
+  notify: Reload Dock
+
+- name: Dock / Make Dock icons of hidden applications translucent
+  osx_defaults:
+    domain: com.apple.dock
     key: showhidden
-    value: -bool YES
-    expect: 1
+    type: bool
+    value: true
+  notify: Reload Dock

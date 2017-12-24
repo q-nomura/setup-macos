@@ -1,136 +1,190 @@
 ---
-- include: _defaults.yml
-  with_items:
-  - desc: Finder / Show icons for hard drives.
-    path: com.apple.finder
+- name: Finder / Show icons for hard drives
+  osx_defaults:
+    domain: com.apple.finder
     key: ShowHardDrivesOnDesktop
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Show icons for external hard drives.
-    path: com.apple.finder
-    key: ShowExternalHardDrivesOnDesktop
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Show icons for removable media.
-    path: com.apple.finder
-    key: ShowRemovableMediaOnDesktop
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Show icons for mounted servers.
-    path: com.apple.finder
-    key: ShowMountedServersOnDesktop
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Show all filename extensions.
-    path: com.apple.finder
-    key: AppleShowAllExtensions
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Show status bar.
-    path: com.apple.finder
-    key: ShowStatusBar
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Show path bar.
-    path: com.apple.finder
-    key: ShowPathbar
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Keep folders on top when sorting by name.
-    path: com.apple.finder
-    key: _FXSortFoldersFirst
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Search the current folder by default.
-    path: com.apple.finder
-    key: FXDefaultSearchScope
-    value: -string "SCcf"
-    expect: SCcf
-  - desc: Finder / Enable the warning when changing a file extension.
-    path: com.apple.finder
-    key: FXEnableExtensionChangeWarning
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Enable the warning before emptying the Trash.
-    path: com.apple.finder
-    key: WarnOnEmptyTrash
-    value: -bool YES
-    expect: 1
+    type: bool
+    value: true
+  notify: Reload Finder
 
-- include: _defaults.yml
-  with_items:
-  - desc: Finder / Allow quitting via ⌘ + Q; doing so will also hide desktop icons.
-    path: com.apple.finder
+- name: Finder / Show icons for external hard drives
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Show icons for removable media
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowRemovableMediaOnDesktop
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Show icons for mounted servers
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowMountedServersOnDesktop
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Show all filename extensions
+  osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Show status bar
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Keep folders on top when sorting by name
+  osx_defaults:
+    domain: com.apple.finder
+    key: _FXSortFoldersFirst
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Search the current folder by default
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXDefaultSearchScope
+    value: SCcf
+  notify: Reload Finder
+
+- name: Finder / Enable the warning when changing a file extension
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXEnableExtensionChangeWarning
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Enable the warning before emptying the Trash
+  osx_defaults:
+    domain: com.apple.finder
+    key: WarnOnEmptyTrash
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Allow quitting via ⌘ + Q; doing so will also hide desktop icons
+  osx_defaults:
+    domain: com.apple.finder
     key: QuitMenuItem
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Enable window animations and Get Info animations.
-    path: com.apple.finder
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Enable window animations and Get Info animations
+  osx_defaults:
+    domain: com.apple.finder
     key: DisableAllAnimations
-    value: -bool NO
-    expect: 0
-  - desc: Finder / Set Home as the default location for new Finder windows.
-    path: com.apple.finder
+    type: bool
+    value: false
+  notify: Reload Finder
+
+- name: Finder / Set Home as the default location for new Finder windows
+  osx_defaults:
+    domain: com.apple.finder
     key: NewWindowTarget
-    value: -string "PfHm"
-    expect: PfHm
-  - desc: Finder / Disable show full POSIX path as Finder window title.
-    path: com.apple.finder
+    value: PfHm
+  notify: Reload Finder
+
+- name: Finder / Disable show full POSIX path as Finder window title
+  osx_defaults:
+    domain: com.apple.finder
     key: _FXShowPosixPathInTitle
-    value: -bool NO
-    expect: 0
-  - desc: Finder / Enable spring loading for directories.
-    path: NSGlobalDomain
+    type: bool
+    value: false
+  notify: Reload Finder
+
+- name: Finder / Enable spring loading for directories
+  osx_defaults:
+    domain: NSGlobalDomain
     key: com.apple.springing.enabled
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Set delay spring loading for directories.
-    path: NSGlobalDomain
+    type: bool
+    value: true
+
+- name: Finder / Set delay spring loading for directories
+  osx_defaults:
+    domain: NSGlobalDomain
     key: com.apple.springing.delay
-    value: -float 0
-    expect: 0
-  - desc: Finder / Avoid creating .DS_Store files on network volumes.
-    path: com.apple.desktopservices
+    type: float
+    value: 0
+
+- name: Finder / Avoid creating .DS_Store files on network volumes
+  osx_defaults:
+    domain: com.apple.desktopservices
     key: DSDontWriteNetworkStores
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Avoid creating .DS_Store files on USB volumes.
-    path: com.apple.desktopservices
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Avoid creating .DS_Store files on USB volumes
+  osx_defaults:
+    domain: com.apple.desktopservices
     key: DSDontWriteUSBStores
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Disable disk image verification.
-    path: com.apple.frameworks.diskimages
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Disable disk image verification
+  osx_defaults:
+    domain: com.apple.frameworks.diskimages
     key: skip-verify
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Disable disk image verification (locked).
-    path: com.apple.frameworks.diskimages
+    type: bool
+    value: true
+
+- name: Finder / Disable disk image verification (locked)
+  osx_defaults:
+    domain: com.apple.frameworks.diskimages
     key: skip-verify-locked
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Disable disk image verification (remote).
-    path: com.apple.frameworks.diskimages
+    type: bool
+    value: true
+
+- name: Finder / Disable disk image verification (remote)
+  osx_defaults:
+    domain: com.apple.frameworks.diskimages
     key: skip-verify-remote
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Automatically open a new Finder window when a readonly volume is mounted.
-    path: com.apple.frameworks.diskimages
+    type: bool
+    value: true
+
+- name: Finder / Automatically open a new Finder window when a readonly volume is mounted
+  osx_defaults:
+    domain: com.apple.frameworks.diskimages
     key: auto-open-ro-root
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Automatically open a new Finder window when a volume is mounted.
-    path: com.apple.frameworks.diskimages
+    type: bool
+    value: true
+
+- name: Finder / Automatically open a new Finder window when a volume is mounted
+  osx_defaults:
+    domain: com.apple.frameworks.diskimages
     key: auto-open-rw-root
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Automatically open a new Finder window when a removable volume is mounted.
-    path: com.apple.finder
+    type: bool
+    value: true
+
+- name: Finder / Automatically open a new Finder window when a removable volume is mounted
+  osx_defaults:
+    domain: com.apple.finder
     key: OpenWindowForNewRemovableDisk
-    value: -bool YES
-    expect: 1
-  - desc: Finder / Enable AirDrop over Ethernet and on unsupported Macs running Lion.
-    path: com.apple.NetworkBrowser
+    type: bool
+    value: true
+  notify: Reload Finder
+
+- name: Finder / Enable AirDrop over Ethernet and on unsupported Macs running Lion
+  osx_defaults:
+    domain: com.apple.NetworkBrowser
     key: BrowseAllInterfaces
-    value: -bool YES
-    expect: 1
+    type: bool
+    value: true

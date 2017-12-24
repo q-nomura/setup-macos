@@ -4,19 +4,26 @@
     name: '{{ item }}'
     state: latest
   with_items:
-  - imagemagick
-  - npm
-  - vim
+  - cmake
+  - flow
+  - git-lfs
   - hub
-
-# - name: Validate installed Meteor.
-#   shell: which meteor
-#   register: meteor
-
-# - name: Install Meteor
-#   shell: curl https://install.meteor.com/ | sh
-#   when: 'not meteor.stdout'
-
+  - hwloc
+  - imagemagick
+  - libmicrohttpd
+  - openssl
+  - vim
+  - watchman
+  - yarn
+    
+- name: Install Wercker app develop.
+  homebrew_cask:
+    name: '{{ item }}'
+    state: present
+  with_items:
+  - wercker
+  - wercker-cli
+    
 - name: Install .NET Framework SDK from Homebrew cask.
   homebrew_cask:
     name: dotnet-sdk
@@ -30,6 +37,21 @@
 - name: Install Visual Studio from Homebrew cask.
   homebrew_cask:
     name: visual-studio
+    state: present
+
+- name: Install Android SDK from Homebrew cask.
+  homebrew_cask:
+    name: android-sdk
+    state: present
+
+- name: Install Android NDK from Homebrew cask.
+  homebrew_cask:
+    name: android-ndk
+    state: present
+
+- name: Install Android Studio from Homebrew cask.
+  homebrew_cask:
+    name: android-studio
     state: present
 
 - name: Install Unity from Homebrew cask.
@@ -47,9 +69,39 @@
   - unity-linux-support-for-editor
   - unity-webgl-support-for-editor
   - unity-windows-support-for-editor
-  - unity-standard-assets
 
 - name: Install Unity Stanard Assets from Homebrew cask.
   homebrew_cask:
     name: unity-standard-assets
     state: present
+
+- name: Validate installed Meteor.
+  shell: which meteor
+  register: meteor
+  ignore_errors: true
+
+- name: Download Meteor
+  get_url:
+    url: https://install.meteor.com/
+    dest: /tmp/install.meteor.sh
+    mode: 0755
+  when: 'not meteor.stdout'
+
+- name: Install Meteor
+  shell: /tmp/install.meteor.sh
+  when: 'not meteor.stdout'
+
+- name: Remove Meteor installer
+  file:
+    path: /tmp/install.meteor.sh
+    state: absent
+
+- name: Set .gitconfig
+  template:
+    src: .gitconfig.j2
+    dest: ~/.gitconfig
+
+- name: Set .vimrc
+  template:
+    src: .vimrc.j2
+    dest: ~/.vimrc

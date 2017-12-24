@@ -9,3 +9,8 @@
   shell: pmset -a standbydelay 86400
   become: true
   when: '"standbydelay         86400" not in power_management.stdout'
+
+- name: Enable auto-restart when after blackout
+  shell: pmset autorestart 1
+  become: true
+  when: '"autorestart          1" not in power_management.stdout'

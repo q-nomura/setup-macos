@@ -4,11 +4,6 @@
     update_homebrew: yes
     upgrade_all: yes
 
-- name: Install mas.
-  homebrew:
-    name: mas
-    state: latest
-
 - name: Install Homebrew cask.
   homebrew_tap:
     name: caskroom/cask

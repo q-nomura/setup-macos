@@ -16,25 +16,11 @@
     name: java
     state: present
 
-- name: Install Adobe AIR from Homebrew cask.
-  homebrew_cask:
-    name: adobe-air
-    state: present
-
-- name: Install Flash Player Debugger from Homebrew cask.
-  homebrew_cask:
-    name: flash-player-debugger
-    state: present
-
-- name: Install Flash Player Debugger (PPAPI) from Homebrew cask.
-  homebrew_cask:
-    name: flash-player-debugger-ppapi
-    state: present
-
-- name: Install Flash Player Debugger (NPAPI) from Homebrew cask.
-  homebrew_cask:
-    name: flash-player-debugger-npapi
-    state: present
+# ### Because it is risk to freeze, it is deleted temporary. ###
+# - name: Install Adobe AIR from Homebrew cask.
+#   homebrew_cask:
+#     name: adobe-air
+#     state: present
 
 - name: Install Unity Web player from Homebrew cask.
   homebrew_cask:

@@ -9,4 +9,4 @@
   when: not vagrant.stat.exists
   ignore_errors: true
 
-# - include: ../../common/handlers/reboot.yml
+# - import_tasks: ../../common/handlers/reboot.yml

@@ -1,39 +1,48 @@
 ---
-- name: Terminal / Download terminal profile.
-  get_url:
-    url: https://gist.githubusercontent.com/danmaq/0673d0593205966b453322022db2a68e/raw/b0f1f3692c504746f720782e718caaafd9a216fc/danmaq.terminal
-    dest: ~/Downloads/danmaq.terminal
+# ### Because it is risk to fail, it is deleted temporary. ###
+# - name: Terminal / Download terminal profile.
+#   get_url:
+#     url: https://gist.githubusercontent.com/danmaq/0673d0593205966b453322022db2a68e/raw/b0f1f3692c504746f720782e718caaafd9a216fc/danmaq.terminal
+#     dest: /tmp/danmaq.terminal
+#
+# - name: Terminal / Load terminal profile.
+#   shell: open /tmp/danmaq.terminal
+#
+# - name: Terminal / Remove loaded profile.
+#   file:
+#     path: /tmp/danmaq.terminal
+#     state: absent
+#
+# - name: Terminal / Set default window profile settings
+#   osx_defaults:
+#     domain: com.apple.terminal
+#     key: Default Window Settings
+#     value: danmaq
+#
+# - name: Terminal / Set startup window profile settings
+#   osx_defaults:
+#     domain: com.apple.terminal
+#     key: Startup Window Settings
+#     value: danmaq
 
-- name: Terminal / Load terminal profile.
-  shell: open ~/Downloads/danmaq.terminal
-
-- name: Terminal / Remove loaded profile.
-  file:
-    path: ~/Downloads/danmaq.terminal
-    state: absent
-
-- include: _defaults.yml
-  with_items:
-  - desc: Terminal / Set using encode
-    path: com.apple.terminal
+- name: Terminal / Set using encode
+  osx_defaults:
+    domain: com.apple.terminal
     key: StringEncodings
-    value: -array 3 4 8 2147483649 2147485224
-    expect: 2147485224
-  - desc: Terminal / Enable Secure Keyboard Entry
-    path: com.apple.terminal
+    type: array
+    value:
+    - '3'
+    - '4'
+    - '8'
+    - '2147483649'
+    - '2147485224'
+
+- name: Terminal / Enable Secure Keyboard Entry
+  osx_defaults:
+    domain: com.apple.terminal
     key: SecureKeyboardEntry
-    value: -bool YES
-    expect: 1
-  - desc: Terminal / Set default window profile settings
-    path: com.apple.terminal
-    key: Default Window Settings
-    value: -string "danmaq"
-    expect: danmaq
-  - desc: Terminal / Set startup window profile settings
-    path: com.apple.terminal
-    key: Startup Window Settings
-    value: -string "danmaq"
-    expect: danmaq
+    type: bool
+    value: true
 
 - name: Terminal / Create .bash_profile
   file:

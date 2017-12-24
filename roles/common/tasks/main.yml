@@ -1,6 +1,9 @@
 ---
-- include: ssh.yml
-- include: update.yml
-- include: locale.yml
-- include: network.yml
-- include: brew.yml
+- import_tasks: ssh.yml
+- import_tasks: update.yml
+- import_tasks: locale.yml
+- import_tasks: network.yml
+- import_tasks: brew.yml
+
+- name: force all notified handlers to run at this point
+  meta: flush_handlers

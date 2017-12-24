@@ -3,6 +3,7 @@
   shell: scutil --get ComputerName
   register: pcname
   changed_when: false
+  ignore_errors: true
 
 - name: Set computer name
   shell: 'scutil --set ComputerName {{ computername }}'
@@ -11,22 +12,25 @@
   notify: Reboot macOS
 
 - name: Collect current host name.
-  shell: scutil --get LocalHostName
+  shell: scutil --get HostName
   register: hostname
   changed_when: false
+  ignore_errors: true
 
 - name: Set host name
-  shell: 'scutil --set LocalHostName {{ computername }}'
+  shell: 'scutil --set HostName {{ computername }}'
   become: yes
   when: hostname.stdout != computername
   notify: Reboot macOS
 
-- name: Collect NetBIOS name
-  shell: defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName
-  register: netbiosname
+- name: Collect current localhost name.
+  shell: scutil --get LocalHostName
+  register: localhostname
   changed_when: false
+  ignore_errors: true
 
-- name: Set NetBIOS name
-  shell: 'defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "{{ computername }}"'
-  when: netbiosname.stdout != computername
+- name: Set localhost name
+  shell: 'scutil --set LocalHostName {{ computername }}'
+  become: yes
+  when: localhostname.stdout != computername
   notify: Reboot macOS

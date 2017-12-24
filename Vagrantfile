@@ -4,12 +4,13 @@
 Vagrant.configure('2') do |config|
   config.vm.box = 'jhcook/macos-sierra'
   config.vm.synced_folder '.', '/vagrant', type: 'rsync', owner: 'vagrant', group: 'staff'
+  config.vm.boot_timeout = 1200
   config.vm.provider 'virtualbox' do |vb|
     vb.gui = true
     vb.cpus = 2
     vb.linked_clone = true
     vb.name = 'OS X Setup test'
-    vb.memory = '3072'
+    vb.memory = '3584'
     vb.customize [
       'modifyvm', :id,
       '--vram', '128',

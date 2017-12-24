@@ -1,17 +1,20 @@
 ---
-- include: appearance.yml
-- include: screen.yml
-- include: dock.yml
-- include: mission-control.yml
-- include: international.yml
-- include: power.yml
-- include: keyboard.yml
-- include: mouse.yml
-- include: printer.yml
-- include: sound.yml
-- include: appstore.yml
-- include: accessibility.yml
-- include: finder.yml
-- include: terminal.yml
-- include: textedit.yml
-- include: otherapps.yml
+- import_tasks: appearance.yml
+- import_tasks: screen.yml
+- import_tasks: dock.yml
+- import_tasks: mission-control.yml
+- import_tasks: international.yml
+- import_tasks: power.yml
+- import_tasks: keyboard.yml
+- import_tasks: mouse.yml
+- import_tasks: printer.yml
+- import_tasks: sound.yml
+- import_tasks: appstore.yml
+- import_tasks: accessibility.yml
+- import_tasks: finder.yml
+- import_tasks: terminal.yml
+- import_tasks: textedit.yml
+- import_tasks: otherapps.yml
+
+- name: force all notified handlers to run at this point
+  meta: flush_handlers

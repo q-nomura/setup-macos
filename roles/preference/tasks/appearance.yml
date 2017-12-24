@@ -1,66 +1,94 @@
 ---
-- include: _defaults.yml
-  with_items:
-  - desc: Appearance / Dark menu mode.
-    path: NSGlobalDomain
+- name: Appearance / Dark menu mode
+  osx_defaults:
+    domain: NSGlobalDomain
     key: AppleInterfaceStyle
-    value: -string "Dark"
-    expect: Dark
-  - desc: Appearance / Set sidebar icon size to large.
-    path: NSGlobalDomain
-    key: NSTableViewDefaultSizeMode
-    value: -int 3
-    expect: 3
-  - desc: Appearance / Set automatic view to scroll bar.
-    path: NSGlobalDomain
-    key: AppleShowScrollBars
-    value: -string "Automatic"
-    expect: Automatic
-  - desc: Appearance / Disable to resume windows on reboot.
-    path: com.apple.systempreferences
-    key: NSQuitAlwaysKeepsWindows
-    value: -bool NO
-    expect: 0
+    value: Dark
+  notify: Reload Dock
 
-- include: _defaults.yml
-  with_items:
-  - desc: Appearance / Use focus ring.
-    path: NSGlobalDomain
+- name: Appearance / Set sidebar icon size to large
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSTableViewDefaultSizeMode
+    type: int
+    value: 3
+  notify: Reload Finder
+
+- name: Appearance / Set automatic view to scroll bar
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleShowScrollBars
+    value: Automatic
+
+- name: Appearance / Disable to resume windows on reboot (1/2)
+  osx_defaults:
+    domain: com.apple.systempreferences
+    key: NSQuitAlwaysKeepsWindows
+    type: bool
+    value: false
+
+- name: Appearance / Disable to resume windows on reboot (2/2)
+  file:
+    path: ~/Library/Saved Application State
+    state: absent
+  become: true
+
+- name: Appearance / Use focus ring
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSAutomaticFocusRingEnabled
-    value: -bool YES
-    expect: 1
-  - desc: Appearance / Use focus ring with animation.
-    path: NSGlobalDomain
+    type: bool
+    value: true
+  notify: Reload SystemUIServer
+
+- name: Appearance / Use focus ring with animation
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSUseAnimatedFocusRing
-    value: -bool YES
-    expect: 1
-  - desc: Appearance / Set 0.1sec when resize panel time span.
-    path: NSGlobalDomain
+    type: bool
+    value: true
+  notify: Reload SystemUIServer
+
+- name: Appearance / Set 0.1sec when resize panel time span
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSWindowResizeTime
-    value: -float 0.1
-    expect: 0.1
-  - desc: Appearance / Expand to default save panel. (1/2)
-    path: NSGlobalDomain
+    type: float
+    value: 0.1
+
+- name: Appearance / Expand to default save panel. (1/2)
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSNavPanelExpandedStateForSaveMode
-    value: -bool YES
-    expect: 1
-  - desc: Appearance / Expand to default save panel. (2/2)
-    path: NSGlobalDomain
+    type: bool
+    value: true
+
+- name: Appearance / Expand to default save panel. (2/2)
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSNavPanelExpandedStateForSaveMode2
-    value: -bool YES
-    expect: 1
-  - desc: Appearance / Save to iCloud by default dest.
-    path: NSGlobalDomain
+    type: bool
+    value: true
+
+- name: Appearance / Save to iCloud by default dest
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSDocumentSaveNewDocumentsToCloud
-    value: -bool YES
-    expect: 1
-  - desc: Appearance / Disable automatic termination of inactive apps.
-    path: NSGlobalDomain
+    type: bool
+    value: true
+#  notify: Reboot macOS
+
+- name: Appearance / Disable automatic termination of inactive apps
+  osx_defaults:
+    domain: NSGlobalDomain
     key: NSDisableAutomaticTermination
-    value: -bool YES
-    expect: 1
-  - desc: Appearance / Enable show help on DevMode
-    path: com.apple.helpviewer
+    type: bool
+    value: true
+  notify: Reload SystemUIServer
+
+- name: Appearance / Enable show help on DevMode
+  osx_defaults:
+    domain: com.apple.helpviewer
     key: DevMode
-    value: -bool YES
-    expect: 1
+    type: bool
+    value: true

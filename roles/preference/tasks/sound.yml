@@ -1,39 +1,44 @@
 ---
-- include: _defaults.yml
-  with_items:
-  - desc: Sound / Set notify sound
-    path: NSGlobalDomain
+- name: Sound / Set notify sound
+  osx_defaults:
+    domain: NSGlobalDomain
     key: com.apple.sound.beep.sound
-    value: -string "/System/Library/Sounds/Glass.aiff"
-    expect: /System/Library/Sounds/Glass.aiff
-  - desc: Sound / Set feedback at change notify sound volume
-    path: NSGlobalDomain
-    key: com.apple.sound.beep.feedback
-    value: -bool YES
-    expect: 1
-  - desc: Sound / Set notify sound volume
-    path: NSGlobalDomain
-    key: com.apple.sound.beep.volume
-    value: -float 1
-    expect: 1
+    value: /System/Library/Sounds/Glass.aiff
 
-- include: _defaults.yml
-  with_items:
-  - desc: Sound / Increase sound quality for Bluetooth headphones/headsets (1/3)
-    path: com.apple.BluetoothAudioAgent
+- name: Sound / Set feedback at change notify sound volume
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.sound.beep.feedback
+    type: bool
+    value: true
+
+- name: Sound / Set notify sound volume
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.sound.beep.volume
+    type: float
+    value: 1
+
+- name: Sound / Increase sound quality for Bluetooth headphones/headsets (1/3)
+  osx_defaults:
+    domain: com.apple.BluetoothAudioAgent
     key: Apple Bitpool Max (editable)
-    value: -int 80
-    expect: 80
-  - desc: Sound / Increase sound quality for Bluetooth headphones/headsets (2/3)
-    path: com.apple.BluetoothAudioAgent
+    type: int
+    value: 80
+
+- name: Sound / Increase sound quality for Bluetooth headphones/headsets (2/3)
+  osx_defaults:
+    domain: com.apple.BluetoothAudioAgent
     key: Apple Bitpool Min (editable)
-    value: -int 53
-    expect: 53
-  - desc: Sound / Increase sound quality for Bluetooth headphones/headsets (3/3)
-    path: com.apple.BluetoothAudioAgent
+    type: int
+    value: 53
+
+- name: Sound / Increase sound quality for Bluetooth headphones/headsets (3/3)
+  osx_defaults:
+    domain: com.apple.BluetoothAudioAgent
     key: Apple Initial Bitpool (editable)
-    value: -int 48
-    expect: 48
+    type: int
+    value: 48
 
 - name: Sound / Set volume.
   shell: osascript -e "set Volume 7"
