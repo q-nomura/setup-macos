@@ -4,14 +4,11 @@
     name: '{{ item }}'
     state: latest
   with_items:
-  - cmake
   - flow
   - git-lfs
   - hub
-  - hwloc
-  - imagemagick
-  - libmicrohttpd
   - openssl
+  - telnet
   - vim
   - watchman
   - yarn
