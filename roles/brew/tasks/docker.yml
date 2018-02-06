@@ -4,8 +4,9 @@
     name: '{{ item }}'
     state: latest
   with_items:
-  - docker-machine
   - docker
+  - docker-machine
+  - docker-compose
 
 - name: Correct docker machine command path.
   shell: which docker-machine
