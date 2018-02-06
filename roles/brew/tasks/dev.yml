@@ -95,10 +95,10 @@
 
 - name: Set .gitconfig
   template:
-    src: .gitconfig.j2
+    src: .gitconfig
     dest: ~/.gitconfig
 
 - name: Set .vimrc
   template:
-    src: .vimrc.j2
+    src: .vimrc
     dest: ~/.vimrc

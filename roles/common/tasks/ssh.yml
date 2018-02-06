@@ -47,7 +47,7 @@
 
 - name: SSH Change Port. (Set files)
   template:
-    src: ssh-alt.plist.j2
+    src: ssh-alt.plist
     dest: /Library/LaunchDaemons/ssh-alt.plist
   become: true
   when: not vagrant.stat.exists
