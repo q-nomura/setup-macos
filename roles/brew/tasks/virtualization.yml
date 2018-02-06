@@ -14,25 +14,4 @@
     name: vagrant
     state: present
 
-- name: Install Docker from Homebrew.
-  homebrew:
-    name: '{{ item }}'
-    state: latest
-  with_items:
-  - docker-machine
-  - docker
-
-- name: Correct docker machine.
-  shell: docker-machine ls
-  changed_when: false
-  register: dockermachine
-
-- name: Create docker machine.
-  shell: docker-machine create default
-  when: "'default' not in dockermachine.stdout"
-
-- name: Terminal / Set .bash_profile
-  lineinfile:
-    dest: ~/.bash_profile
-    regexp: '^eval \$\(docker-machine env\)$'
-    line: 'eval $(docker-machine env)'
+- import_tasks: docker.yml
