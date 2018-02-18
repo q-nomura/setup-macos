@@ -1,0 +1,39 @@
+---
+- name: Install Docker from Homebrew.
+  homebrew:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+  - docker
+  - docker-machine
+  - docker-compose
+
+- name: Correct docker machine command path.
+  shell: which docker-machine
+  register: dockermachine_path
+  changed_when: false
+
+- name: Correct the docker machine.
+  shell: docker-machine ls
+  register: dockermachine
+  changed_when: false
+
+- name: Create the docker machine.
+  shell: docker-machine create default
+  when: "'default' not in dockermachine.stdout"
+
+- name: Relate the docker machine with the docker command.
+  lineinfile:
+    dest: ~/.bash_profile
+    regexp: '^eval \$\(docker-machine env\)$'
+    line: 'eval $(docker-machine env)'
+
+- name: Deploy plist that launch docker-machine at login.
+  template:
+    src: com.docker.machine.default.plist
+    dest: ~/Library/LaunchAgents/com.docker.machine.default.plist
+
+- name: Launch docker-machine at login.
+  shell: launchctl load ~/Library/LaunchAgents/com.docker.machine.default.plist
+  register: docker_launchctl
+  changed_when: '"service already loaded" in docker_launchctl.stdout'

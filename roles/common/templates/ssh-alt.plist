@@ -5,7 +5,7 @@
 	<key>Disabled</key>
 	<true/>
 	<key>Label</key>
-	<string>com.openssh.sshd{{ item.port }}</string>
+	<string>com.openssh.sshd{{ ssh_alt }}</string>
 	<key>Program</key>
 	<string>/usr/libexec/sshd-keygen-wrapper</string>
 	<key>ProgramArguments</key>
@@ -18,7 +18,7 @@
 		<key>Listeners</key>
 		<dict>
 			<key>SockServiceName</key>
-			<string>{{ item.port }}</string>
+			<string>{{ ssh_alt }}</string>
 			<key>Bonjour</key>
 			<array>
 				<string>ssh</string>
