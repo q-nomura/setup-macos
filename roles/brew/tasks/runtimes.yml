@@ -6,9 +6,9 @@
   with_items:
   - mono
 
-- name: Install Silverlight from Homebrew cask.
+- name: Install Flash Player from Homebrew cask.
   homebrew_cask:
-    name: silverlight
+    name: flash-npapi
     state: present
 
 - name: Install Java JRE from Homebrew cask.
