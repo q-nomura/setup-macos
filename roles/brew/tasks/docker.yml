@@ -19,7 +19,7 @@
   changed_when: false
 
 - name: Create the docker machine.
-  shell: docker-machine create default
+  shell: docker-machine create -d virtualbox --virtualbox-cpu-count 3 default
   when: "'default' not in dockermachine.stdout"
 
 - name: Relate the docker machine with the docker command.
